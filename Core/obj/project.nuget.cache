@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KqDX9v99RmzXty0HCvsZlG+ino5TdxjzwEfhIj/Iw1xy0gNqaJ60QV0JwBmoL5hgrq5UY+a1wEbR6WuwFa6ItA==",
+  "dgSpecHash": "bxRjV8vW+bJgucmA9O6GCA/pcLyr2egCHJZJIuqyLJzc2H7REjrqY/8LJK+tXmgShHWOQ2TXFxrZ/NyN/u4yYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\Core\\Core.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\Core\\Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\PaulG\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\PaulG\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

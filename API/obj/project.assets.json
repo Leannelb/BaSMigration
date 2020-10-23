@@ -1185,23 +1185,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PaulG\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\PaulG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\API\\obj\\",
+      "projectPath": "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\PaulG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1214,8 +1210,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\PaulG\\Documents\\Sites\\Skinet\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

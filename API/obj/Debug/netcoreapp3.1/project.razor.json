@@ -1,5 +1,5 @@
 {
-  "FilePath": "c:\\Users\\PaulG\\Documents\\Sites\\Skinet\\API\\API.csproj",
+  "FilePath": "c:\\Users\\Dell\\Documents\\Personal Items\\Coding\\Sites\\BAS2\\BaSMigration\\API\\API.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "3.0",
@@ -14387,7 +14387,7 @@
         }
       }
     ],
-    "CSharpLanguageVersion": 800
+    "CSharpLanguageVersion": 703
   },
   "RootNamespace": "API",
   "Documents": [],

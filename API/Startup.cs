@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
+using API.Dtos;
+using API.Helpers;
+using AutoMapper;
 
 namespace API
 {
@@ -25,6 +28,7 @@ namespace API
         {
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
             services.AddDbContext<StoreContext>(X => X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
         }

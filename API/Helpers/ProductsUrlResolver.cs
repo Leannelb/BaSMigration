@@ -8,7 +8,6 @@ namespace API.Helpers
     public class ProductsUrlResolver : IValueResolver<Product, ProductToReturnDto, string>
     {
         private readonly IConfiguration _config;
-
         public ProductsUrlResolver(IConfiguration config)
         {
             _config = config;
@@ -19,8 +18,6 @@ namespace API.Helpers
          if(!string.IsNullOrEmpty(source.PictureUrl))
             {
                 return _config["ApiUrl"] + source.PictureUrl;
-                
-                // [] IS A property accessor, we can access the property with []
             }
 
             return null;

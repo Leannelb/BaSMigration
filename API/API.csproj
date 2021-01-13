@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7"/>
@@ -10,3 +11,7 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj"/>
   </ItemGroup>
 </Project>
+
+<!-- https://stackoverflow.com/questions/58624146/feature-using-declarations-is-not-available-in-c-sharp-7-3-please-use-languag 
+    Feature 'using declarations' is not available in C# 7.3. Please use language version 8.0 or greater
+-->

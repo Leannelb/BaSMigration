@@ -1,8 +1,35 @@
+using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
 namespace API.Middleware
 {
     public class ExceptionMiddleware
     {
-        public ExceptionMiddleware(RequestDelegate next)
-        
+        private readonly RequestDelegate _next;
+        private readonly ILogger<ExceptionMiddleware> _logger;
+        private readonly IHostEnvironment _env;
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
+        {
+            _env = env;
+            _logger = logger;
+            _next = next;
+
+        }
+
+        public async Task InvokeAsync(HttpContext context)
+        {
+            try 
+            {
+
+            }
+            catch(Exception ex)
+           {
+               
+           }
+        }
+ 
     }
 }

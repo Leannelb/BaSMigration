@@ -36,6 +36,17 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // This is the execption handling middlewaear, we are only handling dev mode errors atm 
+            // responses#
+
+            /* Were going to replace this dev middlewear with our own: 
+            *   if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            *
+            */
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

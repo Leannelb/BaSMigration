@@ -87,6 +87,8 @@ namespace API
 
             app.UseSwagger();
             
+            // have an error telling me 'ApiValidationErrorResponse' does not contain a definition for 'Errors' [API]
+            // Continue on however as the code for section 5 surpasses this and will change again - there is no code for comparision so get to end of 5 and see where you stand
             app.UseSwaggerUI(c => 
                 {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet API v1");});
 

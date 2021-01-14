@@ -9,6 +9,7 @@ using Core.Interfaces;
 using API.Dtos;
 using API.Helpers;
 using AutoMapper;
+using API.Middleware;
 
 namespace API
 {
@@ -46,11 +47,11 @@ namespace API
             }
             *
             */
-            
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+
+// the order here is important, its the order their run
+
+//the block of text above, within the /**/ is reoplaced by
+           app.UseMiddleware<ExceptionMiddleware>();
             
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 

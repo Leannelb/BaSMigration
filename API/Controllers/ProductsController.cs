@@ -9,7 +9,7 @@ using AutoMapper;
 
 namespace API.Controllers
 {
-    [ApiController]
+  [ApiController]
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {

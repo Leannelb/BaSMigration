@@ -11,10 +11,6 @@ using AutoMapper;
 using API.Middleware;
 using API.Extension;
 
-using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using Microsoft.Extensions.Hosting;
-
 namespace API
 {
     public class Startup
@@ -38,11 +34,9 @@ namespace API
                 X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
         
             services.AddApplicationServices();
+            services.AddSwaggerDocumentation();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "SkiNet API", Version = "v1"});
-            });
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,12 +53,7 @@ namespace API
 
             app.UseAuthorization();
 
-            app.UseSwagger();
-            
-            // have an error telling me 'ApiValidationErrorResponse' does not contain a definition for 'Errors' [API]
-            // Continue on however as the code for section 5 surpasses this and will change again - there is no code for comparision so get to end of 5 and see where you stand
-            app.UseSwaggerUI(c => 
-                {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Buy & Sell API v1");});
+            app.UseSwaggerDocumentation();
 
             app.UseEndpoints(endpoints =>
             {

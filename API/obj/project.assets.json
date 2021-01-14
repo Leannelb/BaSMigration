@@ -1431,11 +1431,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\obj\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1451,8 +1451,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

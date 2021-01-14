@@ -12,6 +12,7 @@ using API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using API.Errors;
+using Microsoft.Extensions.Hosting;
 
 namespace API
 {
@@ -61,24 +62,11 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // This is the execption handling middlewaear, we are only handling dev mode errors atm 
-            // responses#
-
-            /* Were going to replace this dev middlewear with our own: 
-            *   if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            *
-            */
-
-// the order here is important, its the order their run
-
-//the block of text above, within the /**/ is reoplaced by
-           app.UseMiddleware<ExceptionMiddleware>();
+              
+            app.UseMiddleware<ExceptionMiddleware>();
             
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
-
+            
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -90,7 +78,7 @@ namespace API
             // have an error telling me 'ApiValidationErrorResponse' does not contain a definition for 'Errors' [API]
             // Continue on however as the code for section 5 surpasses this and will change again - there is no code for comparision so get to end of 5 and see where you stand
             app.UseSwaggerUI(c => 
-                {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet API v1");});
+                {c.SwaggerEndpoint("/swagger/v1/swagger.json", "Buy & Sell API v1");});
 
             app.UseEndpoints(endpoints =>
             {

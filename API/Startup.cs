@@ -9,6 +9,8 @@ using API.Dtos;
 using API.Helpers;
 using AutoMapper;
 using API.Middleware;
+using API.Extension;
+
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.Extensions.Hosting;
@@ -29,29 +31,14 @@ namespace API
         //we'll add our own services for
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+      
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddControllers();
             services.AddDbContext<StoreContext>(X => 
                 X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
         
-            services.Configure<ApiBehaviorOptions>( options => 
-            {
-                options.InvalidModelStateResponseFactory = actionContext =>
-                {
-                    var errors = actionContext.ModelState
-                        .Where(e => e.Value.Errors.Count > 0)
-                        .SelectMany(x => x.Value.Errors)
-                        .Select(x => x.ErrorMessage).ToArray();
+            services.AddApplicationServices();
 
-                var errorResponse = new Errors.ApiValidationErrorResponse
-                {
-                    Errors = errors
-                };
-                return new BadRequestObjectResult(errorResponse);
-                };
-            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "SkiNet API", Version = "v1"});

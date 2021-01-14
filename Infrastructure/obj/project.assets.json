@@ -1477,11 +1477,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\obj\\",
+      "outputPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1497,8 +1497,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj"
+            "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {
+              "projectPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj"
             }
           }
         }

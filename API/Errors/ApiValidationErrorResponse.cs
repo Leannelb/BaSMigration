@@ -7,6 +7,8 @@ namespace API.Errors
 
         }
 
+        public string[] Errors { get; internal set; }
+
         // public IEnumerable<string> 
     }
 }

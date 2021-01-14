@@ -11,7 +11,6 @@ using AutoMapper;
 using API.Middleware;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using API.Errors;
 using Microsoft.Extensions.Hosting;
 
 namespace API
@@ -46,7 +45,7 @@ namespace API
                         .SelectMany(x => x.Value.Errors)
                         .Select(x => x.ErrorMessage).ToArray();
 
-                var errorResponse = new ApiValidationErrorResponse
+                var errorResponse = new Errors.ApiValidationErrorResponse
                 {
                     Errors = errors
                 };

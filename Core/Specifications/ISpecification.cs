@@ -12,7 +12,14 @@ namespace Core.Specifications
 
         Expression<Func<T, object>> OrderByDescending { get; }
 
-// 63. Pagination 40s'
+//get a certain amount of products 
         int Take {get;}
+
+ //skip a certain amount of products 
+ // on second page, take the next 5 products, 
+ // SKIP the first 5. only load what you need
+        int Skip {get;}
+
+        bool isPagingEnabled{get;}
     }
 }

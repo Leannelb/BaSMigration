@@ -14,17 +14,25 @@ namespace Infrastructure.Data
 
             if (spec.Criteria != null )
             {
-                query = query.Where(spec.Criteria); // p => p.ProductTypeId == id
+                query = query.Where(spec.Criteria); // p => p.ProductTypeId == id 
+                //filtering first
             }
 
             if (spec.OrderBy != null )
             {
                 query = query.OrderBy(spec.OrderBy); // p => p.ProductTypeId == id
+                // then sorting
             }
 
             if (spec.OrderByDescending != null )
             {
                 query = query.OrderByDescending(spec.OrderByDescending); // p => p.ProductTypeId == id
+
+            }
+            if (spec.IsPagingEnabled)
+            {
+                query = query.Skip(spec.Skip).Take(spec.Take); // p => p.ProductTypeId == id
+                //then paging - comes at the end of our query list
             }
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));

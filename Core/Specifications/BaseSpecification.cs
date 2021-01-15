@@ -19,6 +19,8 @@ namespace Core.Specifications
         public List<Expression<Func<T, object>>> Includes {get; } = 
             new List<Expression<Func<T, object>>>();
 
+        // here we implement the interfaces from the iSpecification
+
         public Expression<Func<T, object>> OrderBy {get; private set; }
 
         public Expression<Func<T, object>> OrderByDescending  {get; private set; }

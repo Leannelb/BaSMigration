@@ -29,7 +29,9 @@ namespace Core.Specifications
 
         public int Skip {get; private set; }
 
-        public bool isPagingEnabled {get; private set; }
+        public bool IsPagingEnabled {get; private set; }
+
+       // public bool IsPagingEnabled => throw new NotImplementedException();
 
         Expression<Func<T, object>> ISpecification<T>.OrderBy => throw new NotImplementedException();
 

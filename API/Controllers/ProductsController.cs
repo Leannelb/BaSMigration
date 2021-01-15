@@ -32,10 +32,10 @@ namespace API.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts(
-            string sort,int? brandId, int? typeId)
+            [FromQuery]ProductSpecParams productParams)
             // brand id and type id are optional ? int input parameters
         {
-            var spec = new ProductsWithTypesAndBrandsSpecification(sort, brandId, typeId); // pass them in here
+            var spec = new ProductsWithTypesAndBrandsSpecification(productParams); // pass them in here
 
             var products = await _productsRepo.ListAsync(spec);
 

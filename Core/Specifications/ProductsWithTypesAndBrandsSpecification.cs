@@ -7,30 +7,31 @@ namespace Core.Specifications
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     //becasue we access <Product> here
     {
-        public ProductsWithTypesAndBrandsSpecification(string sort, int? brandId, int? typeId) 
+        public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams ) 
             : base( x =>
-                    (!brandId.HasValue || x.ProductBrandId == brandId ) && 
-                    (!typeId.HasValue || x.ProductTypeId == typeId )
-               ) 
+                    (!productParams.BrandId.HasValue || x.ProductBrandId == productParams.BrandId ) && 
+                    (!productParams.TypeId.HasValue || x.ProductTypeId == productParams.TypeId )
+               )
         {
             //here we can use it
             AddInclude(x => x.ProductType);
             AddInclude(x => x.ProductBrand);
             AddOrderBy(x => x.Name); // as a default this will order by name
+            ApplyPaging(productParams.PageSize * (productParams.PageIndex -1), productParams.PageSize);
 
             // use a switch statement to see what the string is - and dependant on this, sort the produdcts
-            if(!string.IsNullOrEmpty(sort))
+            if (!string.IsNullOrEmpty(productParams.Sort))
             {
-                switch (sort) 
+                switch (productParams.Sort)
                 {
                     case "priceAsc":
-                        AddOrderBy(p=>p.Price);
+                        AddOrderBy(p => p.Price);
                         break;
                     case "AddOrderByDesc":
-                        AddOrderByDescending( p => p.Price );
+                        AddOrderByDescending(p => p.Price);
                         break;
                     default:
-                        AddOrderBy( n => n.Name );
+                        AddOrderBy(n => n.Name);
                         break;
 
                 }

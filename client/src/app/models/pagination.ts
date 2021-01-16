@@ -1,4 +1,4 @@
-import { IProduct } from "./product";
+import { IProduct } from './product';
 
 export interface IPagingation {
     pageIndex: number;
@@ -6,4 +6,3 @@ export interface IPagingation {
     count: number;
     data: IProduct[];
   }
-  

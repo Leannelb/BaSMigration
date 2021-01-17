@@ -12,6 +12,8 @@ export class ShopService {
 
   // tslint:disable-next-line: typedef
   getProducts() {
-    return this.http.get<IPagingation>(this.baseUrl + 'products?pageSize=50');
+    return this.http.get<IPagingation>(this.baseUrl + 'products?pageSize=50'); // this returns all of them (or the max 50 if we had 50)
+    // return this.http.get<IPagingation>(this.baseUrl + 'products'); // this returns less items - 6 as we specified that as the default fro retival from the A?I
+
   }
 }

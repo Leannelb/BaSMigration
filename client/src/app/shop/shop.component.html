@@ -47,7 +47,7 @@
       
       <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-         <div col-4 *ngFor="let item of products">
+         <div class="col-4 mb-4" *ngFor="let item of products">
            <!-- //the thing in the [] is equal to the input property -->
            <!-- the thing in the = "item" is equal to the let 'item' -->
            <app-product-item [product]="item"></app-product-item>

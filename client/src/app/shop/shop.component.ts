@@ -13,9 +13,10 @@ export class ShopComponent implements OnInit {
   products: IProduct[];
   brands: IBrand[];
   types: IType[];
-  brandIdSelected: number;
-  typeIdSelected: number;
-
+  brandIdSelected = 0;
+  typeIdSelected = 0;
+  // by initialising the typeIdSelected and brandIdSelected to 0, the 'all' filter is selected on the page  
+  
   constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {

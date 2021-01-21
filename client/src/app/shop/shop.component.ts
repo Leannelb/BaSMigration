@@ -1,3 +1,4 @@
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { IBrand } from '../shared/models/brand';
 import { IProduct } from '../shared/models/product';
@@ -15,8 +16,14 @@ export class ShopComponent implements OnInit {
   types: IType[];
   brandIdSelected = 0;
   typeIdSelected = 0;
-  // by initialising the typeIdSelected and brandIdSelected to 0, the 'all' filter is selected on the page  
-  
+  sortSelected = 'name';
+  // by initialising the typeIdSelected and brandIdSelected to 0, the 'all' filter is selected on the page;
+  sortOptions = [
+    {name: 'Alphabetical', value: 'name'},
+    {name: 'Price: Low to High', value: 'priceAsc'},
+    {name: 'Price: High to Low', value: 'priceDesc'}
+  ];
+
   constructor(private shopService: ShopService) { }
 
   ngOnInit(): void {
@@ -27,7 +34,7 @@ export class ShopComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   getProducts() {
-    this.shopService.getProducts(this.brandIdSelected, this.typeIdSelected).subscribe(response => {
+    this.shopService.getProducts(this.brandIdSelected, this.typeIdSelected, this.sortSelected).subscribe(response => {
       this.products = response.data;
     }, error => {
       console.log('error shop component from service call ', error);
@@ -61,6 +68,12 @@ export class ShopComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onTypeSelected(typeId: number) {
     this.typeIdSelected = typeId;
+    this.getProducts();
+  }
+
+  // tslint:disable-next-line: typedef
+  onSortSelected(sort: string) {
+    this.sortSelected = sort;
     this.getProducts();
   }
 }

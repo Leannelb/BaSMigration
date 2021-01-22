@@ -82,6 +82,7 @@ export class ShopComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onPageChanged(event: any) {
     this.shopParams.pageNumber = event.page;
+    this.getProducts();
     // the event is passed in from our pagination component.
   }
 }

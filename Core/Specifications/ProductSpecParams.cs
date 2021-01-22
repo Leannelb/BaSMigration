@@ -18,7 +18,6 @@ namespace Core.Specifications
         {
             get => _search;
             set => _search = value.ToLower();
-
         }
     }
 }

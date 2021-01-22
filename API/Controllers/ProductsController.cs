@@ -38,7 +38,7 @@ namespace API.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams); // pass them in here
 
-            var countSpec = new ProductsWithTypesAndBrandsSpecification(productParams);
+            var countSpec = new ProductWithFilteringForCountSpecification(productParams);
 
             var totalItems = await _productsRepo.CountAsync(countSpec);
 

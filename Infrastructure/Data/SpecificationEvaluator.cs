@@ -14,7 +14,7 @@ namespace Infrastructure.Data
 
             if (spec.Criteria != null )
             {
-                query = query.Where(spec.Criteria); // p => p.ProductTypeId == id 
+                query = query.Where(spec.Criteria); // p => p.ProductTypeId ==-r did 
                 //filtering first
             }
 
@@ -31,7 +31,8 @@ namespace Infrastructure.Data
             }
             if (spec.IsPagingEnabled)
             {
-                query = query.Skip(spec.Skip).Take(spec.Take); // p => p.ProductTypeId == id
+                query = query.Skip(spec.Skip).Take(spec.Take); 
+                // p => p.ProductTypeId == id
                 //then paging - comes at the end of our query list
             }
 

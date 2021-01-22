@@ -8,6 +8,7 @@
           ? this.totalCount
           : pageNumber * pageSize
         }}
+        <!-- were making sure if nothing comes back. we show there are no results for that particular filter -->
     </strong> of <strong>{{ this.totalCount }}</strong> Results</span>
     <span *ngIf="totalCount === 0">
       There are <strong>0</strong> results for this filter

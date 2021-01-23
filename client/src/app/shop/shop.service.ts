@@ -5,6 +5,8 @@ import { IPagingation } from '../shared/models/pagination';
 import { IType } from '../shared/models/productType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
+import { IProduct } from '../shared/models/product';
+import { ActivatedRoute } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,6 +50,11 @@ export class ShopService {
   // return this.http.get<IPagingation>(this.baseUrl + 'products', {observe: 'response', params});
   // as oppoesed to this which gives us the body of the response automatically
   // return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
+
+  // tslint:disable-next-line: typedef
+  getProduct(id: number) {
+    return this.http.get<IProduct>(this.baseUrl + 'products/' + id );
+  }
 
   // tslint:disable-next-line: typedef
   getTypes() {

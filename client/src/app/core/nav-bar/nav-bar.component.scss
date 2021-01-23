@@ -10,3 +10,24 @@
     top: -12px;
     right: 32px;
 }
+
+a {
+    text-decoration: none;
+    color: #334433;
+
+    &.active {
+        color: orange;
+    }
+//     <a class="p-2 text-dark" href="#">Contact</a>
+// <!-- // bootstrap text-dark or any bootstrap classes add !important-->
+// so rather than fighting over which is the important one and running into issues, just control it here.
+}
+
+.logo {
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+    // there was an outline around the logo from the focus class, this was inbuilt, weve removed them.
+}

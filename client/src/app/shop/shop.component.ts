@@ -93,12 +93,14 @@ export class ShopComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line: typedef
   onSearch() {
     this.shopParams.search = this.searchTerm.nativeElement.value;
     this.shopParams.pageNumber = 1;
     this.getProducts();
   }
 
+  // tslint:disable-next-line: typedef
   onReset() {
     this.searchTerm.nativeElement.value = '';
     this.shopParams = new ShopParams();

@@ -1,5 +1,5 @@
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IBrand } from '../shared/models/brand';
 import { IProduct } from '../shared/models/product';
 import { IType } from '../shared/models/productType';
@@ -12,6 +12,9 @@ import { ShopService } from './shop.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
+  @ViewChild('search', {static: true}) searchTerm: ElementRef;
+  // static as false is used if we have an ngif on the same place or around.
+  // we dont have that so we make it true - it's static, it doesnt rely on any dynamic activity
   products: IProduct[];
   brands: IBrand[];
   types: IType[];
@@ -85,4 +88,16 @@ export class ShopComponent implements OnInit {
     this.getProducts();
     // the event is passed in from our pagination component.
   }
+
+  onSearch() {
+    this.shopParams.search = this.searchTerm.nativeElement.value;
+    this.getProducts();
+  }
+
+  onReset() {
+    this.searchTerm.nativeElement.value = undefined;
+    this.shopParams = new ShopParams();
+    this.getProducts();
+  }
+
 }

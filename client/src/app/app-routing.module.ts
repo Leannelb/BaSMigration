@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule) },
   { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

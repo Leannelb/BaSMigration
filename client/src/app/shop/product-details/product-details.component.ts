@@ -11,7 +11,7 @@ import { ShopService } from '../shop.service';
 export class ProductDetailsComponent implements OnInit {
   product: IProduct;
 
-  constructor(private shopService: ShopService , private activateRoute: ActivatedRoute ) { }
+  constructor(private shopService: ShopService , private activatedRoute: ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.loadProduct();
@@ -19,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   loadProduct() {
-    this.shopService.getProduct(+this.activateRoute.snapshot.paramMap.get('id')).subscribe(product => {
+    this.shopService.getProduct(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe(product => {
       this.product = product;
     }, error => {
       console.log(error);

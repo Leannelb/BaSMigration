@@ -24,7 +24,7 @@ export class TestErrorComponent implements OnInit {
 
   
   get500Error() {
-    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
+    this.http.get(this.baseUrl + 'buggy/servererror').subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);
@@ -32,7 +32,7 @@ export class TestErrorComponent implements OnInit {
   }
 
   get400Error() {
-    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
+    this.http.get(this.baseUrl + 'buggy/badrrequest').subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);

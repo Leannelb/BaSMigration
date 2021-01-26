@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test-error.component.scss']
 })
 export class TestErrorComponent implements OnInit {
-
+  baseUrl = ;
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {

@@ -14,4 +14,8 @@ export class TestErrorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get404Error() {
+    
+  }
+
 }

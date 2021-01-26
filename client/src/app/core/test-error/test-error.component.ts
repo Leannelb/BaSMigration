@@ -14,6 +14,14 @@ export class TestErrorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get400Error() {
+    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+  }
+
   get404Error() {
     this.http.get(this.baseUrl + 'products/42').subscribe(response => {
       console.log(response);

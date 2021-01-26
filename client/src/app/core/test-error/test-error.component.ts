@@ -22,4 +22,20 @@ export class TestErrorComponent implements OnInit {
     });
   }
 
+  
+  get500Error() {
+    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  get400Error() {
+    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+  }
 }

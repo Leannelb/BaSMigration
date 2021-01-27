@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'test-error', component: TestErrorComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'server-error', component: ServerErrorComponent },
+  // adding routes for error handling
   // tslint:disable-next-line: align
   // tslint:disable-next-line: typedef
   { path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule) },

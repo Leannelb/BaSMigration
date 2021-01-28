@@ -27,6 +27,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                         this.router.navigateByUrl('server-error');
                     }
                 }
+                //resta?rt app to see colors
                 return throwError(error);
             })
         );

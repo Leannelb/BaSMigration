@@ -10,6 +10,9 @@ import { catchError } from 'rxjs/operators';
 export class ErrorInterceptor implements HttpInterceptor {
     constructor(private router: Router, private toastr: ToastrService) {}
 
+// he used ngx-toastr but im having issues https://www.npmjs.com/package/ngx-toastr
+// so use the angular2-toastr instead https://www.npmjs.com/package/angular2-toastr 
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(error => {
@@ -27,7 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                         this.router.navigateByUrl('server-error');
                     }
                 }
-                //resta?rt app to see colors
+                // resta?rt app to see colors
                 return throwError(error);
             })
         );

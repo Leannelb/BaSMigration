@@ -11,7 +11,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     constructor(private router: Router, private toastr: ToastrService) {}
 
 // he used ngx-toastr but im having issues https://www.npmjs.com/package/ngx-toastr
-// so use the angular2-toastr instead https://www.npmjs.com/package/angular2-toastr 
+// so use the angular2-toastr instead https://www.npmjs.com/package/angular2-toastr
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(

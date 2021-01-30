@@ -51,13 +51,11 @@ export class TestErrorComponent implements OnInit {
     }, error => {
       console.log(error);
       this.validationErrors = error.error.errors;
-      console.log('this.validationErrors ', this.validationErrors);
-      console.log('this.validationErrors ', this.validationErrors);
     });
   }
-  
+
   // tslint:disable-next-line: typedef
   test() {
-    this.toast.success("I'm a toast!", "Success!");
+    this.toast.success('I\'m a toast!', 'Success!');
   }
 }

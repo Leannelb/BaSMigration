@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~11.0.9",
+    "@angular/animations": "^11.0.9",
     "@angular/common": "~11.0.9",
     "@angular/compiler": "~11.0.9",
     "@angular/core": "~11.0.9",
@@ -20,8 +20,6 @@
     "@angular/platform-browser-dynamic": "~11.0.9",
     "@angular/router": "~11.0.9",
     "@popperjs/core": "^2.6.0",
-    "angular2-toaster": "^11.0.1",
-    "angular2-toastr": "^1.0.6",
     "bootstrap": "^4.6.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,19 +10,14 @@ import { environment } from 'src/environments/environment';
 })
 export class TestErrorComponent implements OnInit {
   baseUrl = environment.apiUrl;
-  constructor(private http: HttpClient) { }
+  validationErrors: any;
+
+  constructor(private http: HttpClient,  private toast: ToastrService ) { }
 
   ngOnInit(): void {
   }
 
-  get400Error() {
-    this.http.get(this.baseUrl + 'products/42').subscribe(response => {
-      console.log(response);
-    }, error => {
-      console.log(error);
-    });
-  }
-
+  // tslint:disable-next-line: typedef
   get404Error() {
     this.http.get(this.baseUrl + 'products/42').subscribe(response => {
       console.log(response);
@@ -29,8 +25,8 @@ export class TestErrorComponent implements OnInit {
       console.log(error);
     });
   }
-  
 
+  // tslint:disable-next-line: typedef
   get500Error() {
     this.http.get(this.baseUrl + 'buggy/servererror').subscribe(response => {
       console.log(response);
@@ -39,11 +35,29 @@ export class TestErrorComponent implements OnInit {
     });
   }
 
-  get400ValidationError() {
-    this.http.get(this.baseUrl + 'buggy/fortytwo').subscribe(response => {
+  // tslint:disable-next-line: typedef
+  get400Error() {
+    this.http.get(this.baseUrl + 'buggy/badrequest').subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);
     });
+  }
+
+  // tslint:disable-next-line: typedef
+  get400ValidationError() {
+    this.http.get(this.baseUrl + 'products/fortytwo').subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+      this.validationErrors = error.error;
+      console.log('this.validationErrors ', this.validationErrors);
+      console.log('this.validationErrors ', this.validationErrors);
+    });
+  }
+  
+  // tslint:disable-next-line: typedef
+  test() {
+    this.toast.success("I'm a toast!", "Success!");
   }
 }

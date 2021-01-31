@@ -12,9 +12,9 @@ import { ShopService } from './shop.service';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', {static: true}) searchTerm: ElementRef;
-  // static as false is used if we have an ngif on the same place or around.
+  @ViewChild('search', {static: false}) searchTerm: ElementRef;
   // we dont have that so we make it true - it's static, it doesnt rely on any dynamic activity
+  // we now rely on an *ngIf therefore it is no longer static
   products: IProduct[];
   brands: IBrand[];
   types: IType[];

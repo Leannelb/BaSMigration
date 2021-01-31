@@ -12,7 +12,10 @@ import { ShopService } from '../shop.service';
 export class ProductDetailsComponent implements OnInit {
   product: IProduct;
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService ) { }
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService ) {
+    this.breadcrumbService.set('@productDetails', '');
+   }
+   // 113 adding this to the constructor should have stopped the numbers showing until the page is ready.... TODO come back to this
 
   ngOnInit(): void {
     this.loadProduct();
@@ -22,7 +25,7 @@ export class ProductDetailsComponent implements OnInit {
   loadProduct() {
     this.shopService.getProduct(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe(product => {
       this.product = product;
-      this.breadcrumbService.set('@productDetails', product.name)
+      this.breadcrumbService.set('@productDetails', product.name);
     }, error => {
       console.log(error);
     });

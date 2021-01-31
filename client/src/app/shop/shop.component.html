@@ -1,41 +1,43 @@
 <div class="container mt-5">
   <div class="row">
     <section class="col-3">
-      <h5 class="text-warning ml-3 my-3">Sort</h5>
-        <!-- we add a change event as, as soon as something is selected we want something to happen
-              rather then passing an id we pass the event value 
-            sortOptions is the name of our-->
-      <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
-        <option *ngFor="let sort of sortOptions"
-          [value]="sort.value"
-          >
-            {{sort.name}}
-        </option>
-      </select>
+      <ng-container *ngIf="types && brands">
+        <h5 class="text-warning ml-3 my-3">Sort</h5>
+          <!-- we add a change event as, as soon as something is selected we want something to happen
+                rather then passing an id we pass the event value 
+              sortOptions is the name of our-->
+        <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
+          <option *ngFor="let sort of sortOptions"
+            [value]="sort.value"
+            >
+              {{sort.name}}
+          </option>
+        </select>
 
-      <h5 class="text-warning ml-3 my-3">Brands</h5>
-      <ul class="list-group">
-        <li class="list-group-item active" 
-          *ngFor="let brand of brands"
-          [class.active]="brand.id === this.shopParams.brandId"
-          [value]="brand.id"
-          (click)="onBrandsSelected(brand.id)"
-          >
-          <!-- when we want to do something - we use ()
-              when we want to pass something in we use []
-          -->
-            {{brand.name}}
-          </li>   
-      </ul>
-      <h5 class="text-warning ml-3 my-3">Types</h5>
-      <ul class="list-group">
-        <li class="list-group-item active" 
-          *ngFor="let type of types"
-          [class.active]="type.id === this.shopParams.typeId"
-          [value]="type.id"
-          (click)="onTypeSelected(type.id)"
-          >{{type.name}}</li>
-      </ul>
+        <h5 class="text-warning ml-3 my-3">Brands</h5>
+        <ul class="list-group">
+          <li class="list-group-item active" 
+            *ngFor="let brand of brands"
+            [class.active]="brand.id === this.shopParams.brandId"
+            [value]="brand.id"
+            (click)="onBrandsSelected(brand.id)"
+            >
+            <!-- when we want to do something - we use ()
+                when we want to pass something in we use []
+            -->
+              {{brand.name}}
+            </li>   
+        </ul>
+        <h5 class="text-warning ml-3 my-3">Types</h5>
+        <ul class="list-group">
+          <li class="list-group-item active" 
+            *ngFor="let type of types"
+            [class.active]="type.id === this.shopParams.typeId"
+            [value]="type.id"
+            (click)="onTypeSelected(type.id)"
+            >{{type.name}}</li>
+        </ul>
+      </ng-container>
     </section>
     <section class="col-9">
       <div class="d-flex justify-content-between align-items-center pb-2">
@@ -45,7 +47,7 @@
 			[pageNumber]="this.shopParams.pageNumber">
 		</app-paging-header>
 
-        <div class="form-inline mt-2">
+        <div class="form-inline mt-2" *ngIf="products">
           <input (keyup.enter)="onSearch()" class="form-control mr-2" style="width: 300px;" #search placeholder="Search">
           <button (click)="onSearch()" class="btn btn-outline-success my-2">Search</button>
           <button (click)="onReset()" class="btn btn-outline-primary ml-2 my-2">Reset</button>
@@ -65,7 +67,6 @@
 				[totalCount]="totalCount"
 				(pageChanged)="onPageChanged($event)"
 			></app-pager>
-        <!-- // issue with pagingation occured @ section 99 or jsut beofre. Rewarch  -->
       </div>
     </section>
   </div>

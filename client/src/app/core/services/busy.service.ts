@@ -10,10 +10,12 @@ export class BusyService {
 
   constructor(private spinnerService: NgxSpinnerService) { }
 
+  //https://napster2210.github.io/ngx-spinner/ options for the spinner
+  
   busy() {
     this.busyRequestCount++;
     this.spinnerService.show(undefined, {
-      type: 'timer',
+      type: 'ball-clip-rotate-pulse',
       bdColor: 'rgba(225,225,225,0.7)',
       color: '#33333'
     });

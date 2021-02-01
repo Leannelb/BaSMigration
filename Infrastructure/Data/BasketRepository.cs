@@ -26,10 +26,9 @@ namespace Infrastructure.Data
             return data.IsNullOrEmpty ? JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
-        public Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
+        public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
-           var created = await _database.StringGetAsync(basket.Id,
-            JsonSerializer(basket), TimeSpan.FromDays(30));
+           var created = await _database.StringGetAsync(basket.Id,JsonSerializer(basket), TimeSpan.FromDays(30));
 
             if(!created) return null;
 

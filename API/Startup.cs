@@ -10,6 +10,7 @@ using API.Helpers;
 using AutoMapper;
 using API.Middleware;
 using API.Extension;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -32,6 +33,13 @@ namespace API
             services.AddControllers();
             services.AddDbContext<StoreContext>(X => 
                 X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<ConnectionMultiplexer>(c => {
+                var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"),
+                true);
+                // add true to ignore any unknown configuration
+                return ConnectionMultiplexer.Connect(configuration);
+            });
         
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();

@@ -14,6 +14,7 @@ namespace Infrastructure.Data
         {
             _database = redis.GetDatabase();
         }
+
         public async Task<bool> DeleteBasketAsync(string basketId)
         {
             return await _database.KeyDeleteAsync(basketId);
@@ -23,14 +24,15 @@ namespace Infrastructure.Data
         {
             var data = await _database.StringGetAsync(basketId);
 
-            return data.IsNullOrEmpty ? JsonSerializer.Deserialize<CustomerBasket>(data);
+            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
-           var created = await _database.StringGetAsync(basket.Id,JsonSerializer(basket), TimeSpan.FromDays(30));
+            var created = await _database.StringSetAsync(basket.Id, 
+                JsonSerializer.Serialize(basket), TimeSpan.FromDays(30));
 
-            if(!created) return null;
+            if (!created) return null;
 
             return await GetBasketAsync(basket.Id);
         }

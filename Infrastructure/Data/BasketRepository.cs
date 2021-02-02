@@ -13,6 +13,8 @@ namespace Infrastructure.Data
         public BasketRepository(IConnectionMultiplexer redis)
         {
             _database = redis.GetDatabase();
+            // this gives us the connection to the DB to 
+            // add to, delete and edit our basket
         }
 
         public async Task<bool> DeleteBasketAsync(string basketId)

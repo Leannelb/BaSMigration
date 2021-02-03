@@ -13,11 +13,6 @@ namespace API.Controllers
             _basketRepository = basketRepository;
         }
 
-// redis is just local temporary storage for a month
-// redis adds information to a snapshot via disk uplaod every minute, 
-// so if the sercer was to go down it would still have the information.
-// lesson 141 didnt work due to:
-// workaround with https://www.c-sharpcorner.com/article/installing-redis-cache-on-windows/
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
         {
@@ -25,11 +20,12 @@ namespace API.Controllers
 
             return Ok(basket ?? new CustomerBasket(id));
         }
-        
-        [HttpGet]
+
+        [HttpPost]
         public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasket basket)
         {
             var updatedBasket = await _basketRepository.UpdateBasketAsync(basket);
+
             return Ok(updatedBasket);
         }
 

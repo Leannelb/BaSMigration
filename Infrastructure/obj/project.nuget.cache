@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K+xC7R0uSb7d8AYr6X5FmwTjVTghwpaLAmPFIgtfSAGvuH08EYo712+03/DSE3ej/VsORQV+muko5Ibj6Fn1FQ==",
+  "dgSpecHash": "nMh6UKMQLDsgt2dzG7V0N0drOIs3duJH5GMKnOmH1fUpo8K/DGO/hL32pt+ygiAHfOGkHxKYoHVEULUQAVjF3w==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

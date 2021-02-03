@@ -34,12 +34,12 @@ namespace API
             services.AddDbContext<StoreContext>(X => 
                 X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
-            services.AddSingleton<IConnectionMultiplexer>(c => {
-                var configuration = ConfigurationOptions.Parse(_config.GetConnectionString("Redis"),
-                true);
-                // add true to ignore any unknown configuration
+             services.AddSingleton<IConnectionMultiplexer>(c => {
+                var configuration = ConfigurationOptions.Parse(_config
+                    .GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);
             });
+
         
             services.AddApplicationServices();
             services.AddSwaggerDocumentation();

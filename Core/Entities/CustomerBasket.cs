@@ -13,6 +13,7 @@ namespace Core.Entities
             Id = id;
         }
 
+        // end of section 30
         public string Id { get; set; }
         public List<BasketItem> Items { get; set; } = new List<BasketItem>();
     }

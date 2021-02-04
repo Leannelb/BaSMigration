@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { IBasket, IBasketItem } from '../shared/models/basket';
+import { Basket, IBasket, IBasketItem } from '../shared/models/basket';
 import { IProduct } from '../shared/models/product';
 
 @Injectable({
@@ -44,9 +44,21 @@ export class BasketService {
   // tslint:disable-next-line: typedef
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
+    const basket = this.getCurrentBasketValue() ?? this.createBasket();
   }
-  mapProductItemToBasketItem(item: IProduct, quantity: number): IBasketItem {
-    throw new Error('Method not implemented.');
+  private createBasket(): IBasket {
+    const basket = new Basket();
+  }
+  private mapProductItemToBasketItem(item: IProduct, quantity: number): IBasketItem {
+    return {
+      id: item.id,
+      productName: item.name,
+      price: item.price,
+      pictureUrl: item.pictureUrl,
+      quantity,
+      brand: item.productBrand,
+      type: item.productType
+    };
   }
 }
 

@@ -18,6 +18,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line: typedef
   addItemToBasket() {
     this.basketService.addItemToBasket(this.product);
   }

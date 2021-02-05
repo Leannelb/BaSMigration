@@ -53,11 +53,13 @@ export class BasketService {
 
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     // check if we have an item with this id,
-    const index = items.findIndex(i ==> i.id === itemToAdd.id);
+    const index = items.findIndex(i => i.id === itemToAdd.id);
     if (index === -1) {
+      // if it was not found
       itemToAdd.quantity = quantity;
       items.push(itemToAdd);
     } else {
+      // if found
       items[index].quantity += quantity;
     }
     return items;

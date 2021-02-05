@@ -45,9 +45,22 @@ export class BasketService {
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
-    basket.items = this.addOrUpdate(basket.items, itemToAdd, quantity)
+    basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
     // we must check if its already there and add this too the basket
     // so we cant just do this:     basket.items.push(itemToAdd);
+    this.setBasket(basket);
+  }
+
+  private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
+    // check if we have an item with this id,
+    const index = items.findIndex(i ==> i.id === itemToAdd.id);
+    if (index === -1) {
+      itemToAdd.quantity = quantity;
+      items.push(itemToAdd);
+    } else {
+      items[index].quantity += quantity;
+    }
+    return items;
   }
   private createBasket(): IBasket {
     const basket = new Basket();

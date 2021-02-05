@@ -45,10 +45,19 @@ export class BasketService {
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
     const basket = this.getCurrentBasketValue() ?? this.createBasket();
+    basket.items = this.addOrUpdate(basket.items, itemToAdd, quantity)
+    // we must check if its already there and add this too the basket
+    // so we cant just do this:     basket.items.push(itemToAdd);
   }
   private createBasket(): IBasket {
     const basket = new Basket();
+    localStorage.setItem('basket_id', basket.id);
+    // basket id gives us some level of persistance in local storage
+    // if they close their basket or closes their laptop down,
+    // its browser specific so if they do it on google chrome will only be found here
+    return basket;
   }
+
   private mapProductItemToBasketItem(item: IProduct, quantity: number): IBasketItem {
     return {
       id: item.id,

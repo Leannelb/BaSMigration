@@ -44,7 +44,10 @@ export class BasketService {
   // tslint:disable-next-line: typedef
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
-    const basket = this.getCurrentBasketValue() ?? this.createBasket();
+    let basket = this.getCurrentBasketValue() ?? this.createBasket();
+    if (basket === null){
+      basket = this.createBasket();
+    }
     basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
     // we must check if its already there and add this too the basket
     // so we cant just do this:     basket.items.push(itemToAdd);

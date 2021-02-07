@@ -23,6 +23,7 @@ export class BasketService {
     .pipe(
       map((basket: IBasket) => {
         this.basketSource.next(basket);
+        console.log('map , ', this.getCurrentBasketValue);
       })
     );
   }

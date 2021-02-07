@@ -48,6 +48,7 @@ export class BasketService {
     if (basket === null){
       basket = this.createBasket();
     }
+    console.log('basket ', basket );
     basket.items = this.addOrUpdateItem(basket.items, itemToAdd, quantity);
     // we must check if its already there and add this too the basket
     // so we cant just do this:     basket.items.push(itemToAdd);
@@ -56,6 +57,7 @@ export class BasketService {
 
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     // check if we have an item with this id,
+    console.log('items, ', items );
     const index = items.findIndex(i => i.id === itemToAdd.id);
     if (index === -1) {
       // if it was not found

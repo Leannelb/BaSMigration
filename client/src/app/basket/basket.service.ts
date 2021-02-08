@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ThisReceiver } from '@angular/compiler';
+import { isNgTemplate, ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -40,7 +40,7 @@ export class BasketService {
       console.log(error);
     });
   }
-  
+
   private calculateTotals() {
     const basket = this.getCurrentBasketValue();
     const shipping = 0;
@@ -67,6 +67,45 @@ export class BasketService {
     // so we cant just do this:     basket.items.push(itemToAdd);
     this.setBasket(basket);
   }
+  incrementItemQuantity (item: IBasketItem) {
+    const basket = this.getCurrentBasketValue();
+    const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
+    basket.items[foundItemIndex].quantity++;
+    this.setBasket(basket);
+  }
+
+  decrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentBasketValue();
+    const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
+    if(basket.items[foundItemIndex].quantity > 1) {
+      basket.items[foundItemIndex].quantity--;
+    } else {
+            this.removeItemFromBasket(basket);
+      }
+  }
+
+  removeItemFromBasket(item: IBasket) {
+    const basket = this.getCurrentBasketValue();
+    if(basket.items.some(x=> x.id === item.id)) {
+      basket.items = basket.items.filter(i => i.id !== item.id);
+      if (basket.items.length > 0 ) {
+        this.setBasket(basket);
+      } else {
+        this.deleteBasket(basket);
+      }
+    }
+  }
+
+  deleteBasket(basket: IBasket) {
+    return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(() => {
+      this.basketSource.next(null);
+      this.basketTotalSource.next(null);
+      localStorage.removeItem('basket_id');
+    }, error => {
+      console.log(error);    
+    });
+  } 
+
 
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     // check if we have an item with this id,

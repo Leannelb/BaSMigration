@@ -11,16 +11,16 @@ export class AppComponent implements OnInit {
 
   constructor(private basketService: BasketService) {}
   title = 'client';
-  const basketId = localStorage.getItem('basket_id');
 
-  ngOnInit(): void {}
-      if(basketId) {
+  ngOnInit(): void {
+      const basketId = localStorage.getItem('basket_id');
+ if(basketId) {
     this.basketService.getBasket(basketId).subscribe(() => {
       console.log('initalised basket');
     }, error => {
       console.log('error ' , error);
     });
     }
+  }
 }
-
 

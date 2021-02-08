@@ -20,3 +20,9 @@ export class Basket implements IBasket {
     items: IBasketItem[] = [];
 }
 // installed npm install uuid to get unique IDs for baskets
+export interface IBasketTotals  {
+    shipping: number;
+    subtotal: number;
+    total: number;
+}
+// 

@@ -48,7 +48,7 @@
                                             </div>
                                         </th>
                                         <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
-                                        <!-- <td class="align-middle">
+                                        <td class="align-middle">
                                             <div class="d-flex align-items-center">
                                                 <i (click)="decrementItemQuantity(item)" class="fa fa-minus-circle text-warning mr-2"
                                                     style="cursor: pointer; font-size: 2em;"></i>
@@ -65,7 +65,7 @@
                                             <a class="text-danger">
                                                 <i (click)="removeBasketItem(item)" class="fa fa-trash" style="font-size: 2em; cursor: pointer;"></i>
                                             </a>
-                                        </td> -->
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -75,7 +75,7 @@
 
                 <div class="row">
                     <div class="col-6 offset-6">
-                        <!-- <app-order-totals></app-order-totals> -->
+                        <app-order-totals></app-order-totals>
                         <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block">
                             Proceed to checkout
                         </a>

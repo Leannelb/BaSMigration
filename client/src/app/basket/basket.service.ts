@@ -25,6 +25,7 @@ export class BasketService {
     .pipe(
       map((basket: IBasket) => {
         this.basketSource.next(basket);
+        this.calculateTotals();
         console.log('map , ', this.getCurrentBasketValue);
       })
     );
@@ -39,6 +40,7 @@ export class BasketService {
       console.log(error);
     });
   }
+  
   private calculateTotals() {
     const basket = this.getCurrentBasketValue();
     const shipping = 0;

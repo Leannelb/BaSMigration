@@ -33,4 +33,15 @@ export class ProductDetailsComponent implements OnInit {
       console.log(error);
     });
   }
+
+  addItemToBasket(){
+    this.basketService.addItemToBasket(this.product, this.quantity);
+  }
+
+  incrementQuantity() {
+    this.quantity++;
+  }
+  decrementQuantity() {
+    this.quantity --;
+  }
 }

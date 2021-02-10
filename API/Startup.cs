@@ -11,6 +11,7 @@ using AutoMapper;
 using API.Middleware;
 using API.Extension;
 using StackExchange.Redis;
+using Infrastructure.Identity;
 
 namespace API
 {
@@ -34,7 +35,11 @@ namespace API
             services.AddDbContext<StoreContext>(X => 
                 X.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
-             services.AddSingleton<IConnectionMultiplexer>(c => {
+            services.AddDbContext<AppIdentityDbContext>(x => {
+                x.UseSqlite(_config.GetConnectionString("IdentityConnection"));
+            });
+            
+            services.AddSingleton<IConnectionMultiplexer>(c => {
                 var configuration = ConfigurationOptions.Parse(_config
                     .GetConnectionString("Redis"), true);
                 return ConnectionMultiplexer.Connect(configuration);

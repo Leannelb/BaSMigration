@@ -14,8 +14,10 @@ export class ProductDetailsComponent implements OnInit {
   product: IProduct;
   quantity = 1;
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, 
-    private breadcrumbService: BreadcrumbService, private basketService: BasketService ) {
+  constructor(private shopService: ShopService,
+              private activatedRoute: ActivatedRoute,
+              private breadcrumbService: BreadcrumbService,
+              private basketService: BasketService ) {
     this.breadcrumbService.set('@productDetails', '');
    }
    // 113 adding this to the constructor should have stopped the numbers showing until the page is ready.... TODO come back to this
@@ -33,18 +35,18 @@ export class ProductDetailsComponent implements OnInit {
       console.log(error);
     });
   }
-
+  // tslint:disable-next-line: typedef
   addItemToBasket(){
     this.basketService.addItemToBasket(this.product, this.quantity);
   }
-
+  // tslint:disable-next-line: typedef
   incrementQuantity() {
     this.quantity++;
   }
+  // tslint:disable-next-line: typedef
   decrementQuantity() {
-    if(this.quantity > 1){
+    if (this.quantity > 1){
           this.quantity --;
-
     }
   }
 }

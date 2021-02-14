@@ -56,7 +56,6 @@ C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Core
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.csprojAssemblyReference.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.AssemblyInfoInputs.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.AssemblyInfo.cs
-C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.RazorTargetAssemblyInfo.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.csproj.CopyComplete
@@ -64,7 +63,6 @@ C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\stat
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.xml
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.dll
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.pdb
-C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
@@ -93,3 +91,19 @@ C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\runt
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\testglobal.json

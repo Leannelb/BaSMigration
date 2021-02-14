@@ -1,4 +1,6 @@
-namespace Core.Entities.Identity
+using Core.Entities.Identity;
+
+namespace Core.Entities
 {
     public class Address
     {
@@ -11,6 +13,5 @@ namespace Core.Entities.Identity
         public string ZipCode {get; set;}
         public string AppUserId {get; set;}
         public AppUser AppUser {get; set;}
-
     }
 }

@@ -12,6 +12,7 @@ using API.Middleware;
 using API.Extension;
 using StackExchange.Redis;
 using Infrastructure.Identity;
+using API.Extensions;
 
 namespace API
 {
@@ -47,6 +48,7 @@ namespace API
 
         
             services.AddApplicationServices();
+            services.AddIdentityServices();
             services.AddSwaggerDocumentation();
             services.AddCors(opt => 
             {

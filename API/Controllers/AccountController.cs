@@ -1,12 +1,6 @@
-// using System.Threading.Tasks;
-// using API.Dtos;
-// using API.Errors;
-// using Core.Entities.Identity;
-// using Microsoft.AspNetCore.Identity;
-// using Microsoft.AspNetCore.Mvc;
-
 using System.Threading.Tasks;
 using API.DataTransferObjects;
+using API.Errors;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +22,7 @@ namespace API.Controllers
         {
             // to login we need a combo of the user manager to get the user
 
-            var user = await _userManager.FindByIdAsync(loginDto.Email);
+            var user = await _userManager.FindByEmailAsync(loginDto.Email);
 
             if (user == null ) return Unauthorized(new ApiResponse(401));
 

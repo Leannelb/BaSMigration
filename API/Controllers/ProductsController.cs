@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.Specifications;
-using API.Dtos;
+using API.DataTransferObjects;
 using AutoMapper;
 using API.Errors;
 using Microsoft.AspNetCore.Http;

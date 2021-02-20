@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Core.Interfaces;
-using API.Dtos;
+using API.DataTransferObjects;
 using API.Helpers;
 using AutoMapper;
 using API.Middleware;

@@ -6,7 +6,7 @@
 // using Microsoft.AspNetCore.Mvc;
 
 using System.Threading.Tasks;
-using API.Dtos;
+using API.DataTransferObjects;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

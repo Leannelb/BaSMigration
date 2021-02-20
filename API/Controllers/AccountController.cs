@@ -16,7 +16,8 @@ namespace API.Controllers
             _signInManager = signInManager;
             _userManager = userManager;
         }
-
+        
+// method to log a user in !
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -35,6 +36,28 @@ namespace API.Controllers
                 Email = user.Email,
                 Token = "this will be a token",
                 DisplayName = user.DisplayName
+            };
+        }
+// method to register a new user  !
+        [HttpPost("register")]
+        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
+        {
+            var user = new AppUser 
+            {
+                DisplayName = registerDto.DisplayName,
+                Email = registerDto.Email,
+                UserName = registerDto.Email
+            };
+
+            var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+            if(!result.Succeeded) return BadRequest(new ApiResponse(400));       
+
+            return new UserDto
+            {
+                DisplayName = user.DisplayName,
+                Token = "This will be a token",
+                Email = user.Email
             };
         }
     }

@@ -3,6 +3,7 @@ using Infrastructure.Data;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
+using Infrastructure.MyServices;
 
 namespace API.Extension
 {
@@ -10,6 +11,7 @@ namespace API.Extension
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<ITokenService, TokenService>(); // in this case where we put this line doesnt really matter, added @ top
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));

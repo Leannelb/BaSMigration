@@ -1,4 +1,5 @@
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -10,6 +11,15 @@ namespace API.Controllers
         {
             _context = context;
 
+        }
+
+        [HttpGet("testauth")]
+        //[Authorize]
+        // here we validate the signature and the issuer and if it is okay, we then authorise line above and we can see the 
+        // secret stuff text below then
+        public ActionResult<string> GetSecretText() 
+        {
+            return "secret stuff";
         }
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest()

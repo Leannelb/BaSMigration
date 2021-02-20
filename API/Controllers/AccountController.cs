@@ -1,6 +1,12 @@
+// using System.Threading.Tasks;
+// using API.Dtos;
+// using API.Errors;
+// using Core.Entities.Identity;
+// using Microsoft.AspNetCore.Identity;
+// using Microsoft.AspNetCore.Mvc;
+
 using System.Threading.Tasks;
 using API.Dtos;
-using API.Errors;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +18,6 @@ namespace API.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
-
         {
             _signInManager = signInManager;
             _userManager = userManager;

@@ -23,6 +23,9 @@ namespace API.Extensions
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
+                        // tell identity what we wwant to validate. Validate issuer signing key 
+                        // (without this user could send up any token and get in - there would be no validation)
+                        
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config
                         ["Token:Key"])),

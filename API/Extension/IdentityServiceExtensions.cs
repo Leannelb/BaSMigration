@@ -31,6 +31,7 @@ namespace API.Extensions
                         ["Token:Key"])),
                         ValidIssuer = config["Token:Issuer"],
                         ValidateIssuer = true,
+                        ValidateAudience = false
                     };
                 });
             

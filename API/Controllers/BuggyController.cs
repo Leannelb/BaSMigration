@@ -14,7 +14,7 @@ namespace API.Controllers
         }
 
         [HttpGet("testauth")]
-        //[Authorize]
+        [Authorize]
         // here we validate the signature and the issuer and if it is okay, we then authorise line above and we can see the 
         // secret stuff text below then
         public ActionResult<string> GetSecretText() 

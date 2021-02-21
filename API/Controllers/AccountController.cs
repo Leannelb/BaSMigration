@@ -48,6 +48,7 @@ namespace API.Controllers
             return await _userManager.FindByEmailAsync(email) != null;
         }
 
+        // have an error working through it 
         [Authorize]
         [HttpGet("address")]
         public async Task<ActionResult<Address>> GetUserAddress()

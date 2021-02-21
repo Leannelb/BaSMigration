@@ -49,6 +49,7 @@ namespace API.Controllers
         }
 
         // have an error working through it 
+        // cannot find claim type investigate
         [Authorize]
         [HttpGet("address")]
         public async Task<ActionResult<Address>> GetUserAddress()

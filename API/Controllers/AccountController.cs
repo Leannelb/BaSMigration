@@ -59,7 +59,7 @@ namespace API.Controllers
             
             var user = await _userManager.FindByEmailAsync(email);
 
-            return user.Address;
+            return null;
         }
 
         // method to log a user in !

@@ -23,14 +23,14 @@ namespace API.Extensions
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        // tell identity what we wwant to validate. Validate issuer signing key 
+                        // tell identity what we want to validate. Validate issuer signing key 
                         // (without this user could send up any token and get in - there would be no validation)
                         
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config
                         ["Token:Key"])),
-                        ValidIssuer = config["Token:Issuer"],
-                        ValidateIssuer = true,
+                        ValidIssuer = config["Token:Issuer"], // add a token to our issuer
+                        ValidateIssuer = true, // validate the issuer
                         ValidateAudience = false
                     };
                 });

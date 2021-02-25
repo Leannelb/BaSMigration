@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DataTransferObjects;
 using API.Errors;
@@ -28,7 +29,7 @@ namespace API.Controllers
         //client gives me a token from customers last login
         public async Task<ActionResult<UserDto>> GetCurrentUser() 
         {
-            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimType.Email)?.Value;
+            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
             var user = await _userManager.FindByEmailAsync(email);
 
@@ -58,7 +59,7 @@ namespace API.Controllers
             
             var user = await _userManager.FindByEmailAsync(email);
 
-            return user.Adderss;
+            return user.Address;
         }
 
         // method to log a user in !

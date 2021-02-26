@@ -21,7 +21,6 @@ namespace API.Controllers
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager,
-       
         ITokenService tokenService, IMapper mapper)
         {
             _mapper = mapper;
@@ -52,6 +51,7 @@ namespace API.Controllers
     {
         return await _userManager.FindByEmailAsync(email) != null;
     }
+    // FindUserByClaimsPrincipleWithAddressAsync
 
     // have an error working through it 
     // cannot find claim type investigate
@@ -59,27 +59,26 @@ namespace API.Controllers
     [HttpGet("address")]
     public async Task<ActionResult<AddressDto>> GetUserAddress()
     {
-        var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+        var user = await _userManager.FindByUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
         return _mapper.Map<Address, AddressDto>(user.Address);
-
     }
 
     [Authorize]
     [HttpPut("address")]
     public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
     {
-        var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+        var user = await _userManager.FindByUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
-        user.Address =  _mapper.Map<AddressDto, Address>(address);
-        
+        user.Address = _mapper.Map<AddressDto, Address>(address);
+
         var result = await _userManager.UpdateAsync(user);
 
-        if(result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+        if (result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
 
         return BadRequest("Problem updating the user");
-
     }
+
 
     // method to log a user in !
     [HttpPost("login")]

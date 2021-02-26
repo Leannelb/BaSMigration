@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DataTransferObjects;
 using API.Errors;
+using API.Extension;
 using Core.Entities;
 using Core.Entities.Identity;
 using Core.Interfaces;
@@ -29,9 +30,7 @@ namespace API.Controllers
         //client gives me a token from customers last login
         public async Task<ActionResult<UserDto>> GetCurrentUser() 
         {
-            var email = HttpContext.User?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
-
-            var user = await _userManager.FindByEmailAsync(email);
+            var user = await _userManager.FindByEmailFromClaimsPrinciple(HttpContext.User);
 
              return new UserDto
             {
@@ -54,6 +53,16 @@ namespace API.Controllers
         [Authorize]
         [HttpGet("address")]
         public async Task<ActionResult<Address>> GetUserAddress()
+        {
+            var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
+
+            return user.Address;
+
+        }
+
+        [Authorize]
+        [HttpPut("address")]
+        public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
             var email = HttpContext.User?.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
             

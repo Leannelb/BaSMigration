@@ -71,9 +71,14 @@ namespace API.Controllers
     {
         var user = await _userManager.FindUserByClaimsPrincipleWithAddressAsync(HttpContext.User);
 
-        user.address = _mapper.Map<AddressDto, Address>(address);
+        user.Address =  _mapper.Map<AddressDto, Address>(address);
+        
+        var result = await _userManager.UpdateAsync(user);
 
-        return null;
+        if(result.Succeeded) return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+
+        return BadRequest("Problem updating the user");
+
     }
 
     // method to log a user in !

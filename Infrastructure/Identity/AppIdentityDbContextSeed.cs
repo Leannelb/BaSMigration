@@ -17,15 +17,15 @@ namespace Infrastructure.Identity
                     DisplayName = "Bob",
                     Email = "bob@test.com",
                     UserName = "bob@test.com",
-                    Address = new Address
-                    {
-                        FirstName = "Bob",
-                        LastName = "Bobbity",
-                        Street = "20 The street",
-                        City = "New York",
-                        State = "NY",
-                        ZipCode = "90210"
-                    }
+                    // Address = new Address
+                    // {
+                    //     FirstName = "Bob",
+                    //     LastName = "Bobbity",
+                    //     Street = "20 The street",
+                    //     City = "New York",
+                    //     State = "NY",
+                    //     ZipCode = "90210"
+                    // }
                 };
 
                 await userManager.CreateAsync(user, "Pa$$w0rd");            

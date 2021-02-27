@@ -105,7 +105,7 @@ namespace API.Controllers
     [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
-        if(CheckEmailExistsAsync(registerDto.Email).Result.Value)
+        if(CheckEmailExistsAsync(registerDto.Email).Result.Value) // get result.value as this is an async method
         {
             // we need return NEW as we are creating a new instance of BadRequestObjectResult to return
             return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new []{"Email address is in use"}});

@@ -6,3 +6,5 @@ export interface IAddress {
     state: string;
     zipCode: string;
 }
+
+// address and user interfaces set up copied from swagger, to json to TS, then exported as an interface

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -26,8 +27,23 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   onSubmit() {
-    console.log('this.loginForm.controls ', this.loginForm.controls);
-    console.log({this: this.loginForm});
+    this.accountService.login(this.loginForm.value).subscribe(() => {
+      console.log('user logged in');
+    }, error => {
+      console.log(error);
+    });
   }
-
+  /* 
+method from the service for reference:
+login(values: any) {
+    return this.http.post(this.baseUrl + 'account/login', values).pipe(
+      map((user: IUser) => {
+        if (user) {
+          localStorage.setItem('token', user.token);
+          this.currentUserSource.next(user);
+        }
+      })
+    );
+  }
+  */
 }

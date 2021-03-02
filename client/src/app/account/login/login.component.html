@@ -18,6 +18,14 @@
                 <input formControlName="password" type="text" id="password" class="fadeIn third" name="password" placeholder="password">
                 <input type="submit" class="fadeIn fourth" value="Log In">
               </form>
+
+              <div class col-4>
+                <p>Form Status: {{loginForm.status}}</p>
+                <p>Emai Status: {{loginForm.get('email').status}}</p>
+                <p>Emai Touched: {{loginForm.get('email').touched}}</p>
+                <p>Emai Dirty: {{loginForm.get('email').dirty}}</p>
+                <pre>{{loginForm.value | json}} </pre>
+              </div>
           
               <!-- Remind Passowrd -->
               <div id="formFooter">

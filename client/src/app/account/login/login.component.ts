@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   createLoginForm() {
     this.loginForm = new FormGroup ({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')]),
       password: new FormControl('', Validators.required)
     });
   }
@@ -28,22 +29,9 @@ export class LoginComponent implements OnInit {
   // tslint:disable-next-line: typedef
   onSubmit() {
     this.accountService.login(this.loginForm.value).subscribe(() => {
-      console.log('user logged in');
+      this.router.navigateByUrl('/shop');
     }, error => {
       console.log(error);
     });
   }
-  /* 
-method from the service for reference:
-login(values: any) {
-    return this.http.post(this.baseUrl + 'account/login', values).pipe(
-      map((user: IUser) => {
-        if (user) {
-          localStorage.setItem('token', user.token);
-          this.currentUserSource.next(user);
-        }
-      })
-    );
-  }
-  */
 }

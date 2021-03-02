@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
     if (basketId) {
       this.basketService.getBasket(basketId).subscribe(
         () => {
+          // not seeing this console.log
           console.log('>>>initalised basket');
         },
         (error) => {

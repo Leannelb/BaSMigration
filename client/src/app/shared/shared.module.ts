@@ -6,15 +6,20 @@ import { PagerComponent } from './components/pager/pager.component';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
-  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalsComponent],
+  declarations: [
+    PagingHeaderComponent,
+    PagerComponent,
+    OrderTotalsComponent,
+    TextInputComponent,
+  ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(), // bootstraps services need to be injected @ startup
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   // we add for root because the PaginationModule has it's own providers array that need to be injected into the root at startup.
   exports: [
@@ -23,7 +28,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     PagerComponent,
     OrderTotalsComponent,
     ReactiveFormsModule,
-    BsDropdownModule
-  ]
+    BsDropdownModule,
+    TextInputComponent
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

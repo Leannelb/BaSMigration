@@ -40,7 +40,9 @@ export class RegisterComponent implements OnInit {
 
   validateEmailNotTaken() : AsyncValidatorFn {
     return control => {
-      return timer(500)
+      return timer(500).pipe(
+        // will add method
+      )
     }
 
   }

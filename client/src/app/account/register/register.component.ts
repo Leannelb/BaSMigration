@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
   }
 
   validateEmailNotTaken() : AsyncValidatorFn {
+    return control
 
   }
 

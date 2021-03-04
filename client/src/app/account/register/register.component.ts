@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AsyncValidatorFn, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -38,7 +39,9 @@ export class RegisterComponent implements OnInit {
   }
 
   validateEmailNotTaken() : AsyncValidatorFn {
-    return control
+    return control => {
+      return timer(500)
+    }
 
   }
 

@@ -14,11 +14,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private accountService: AccountService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.returnUrl = this.activatedRoute.snapshot.queryParams.returnUrl || '/shop';
     this.createLoginForm();
   }
 
+  // tslint:disable-next-line: typedef
   createLoginForm() {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators

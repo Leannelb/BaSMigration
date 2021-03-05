@@ -12,9 +12,13 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   @Input() label: string;
 
   constructor(@Self() public controlDir: NgControl) {
+    // ngControl is what our form controls derive from
+    // self() is for angular dependancy injection
+    // looks for what it needs to inject intoi itself by walking up the tree.. aka an ngControl
     this.controlDir.valueAccessor = this;
   }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     const control = this.controlDir.control;
     const validators = control.validator ? [control.validator] : [];
@@ -25,8 +29,10 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
     control.updateValueAndValidity();
   }
 
+  // tslint:disable-next-line: typedef
   onChange(event) { }
 
+  // tslint:disable-next-line: typedef
   onTouched() { }
 
   writeValue(obj: any): void {

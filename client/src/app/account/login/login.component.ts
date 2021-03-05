@@ -29,11 +29,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   onSubmit() {
     this.accountService.login(this.loginForm.value).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);
     }, error => {
-      console.log(error);
+      console.log('logincomp>>> error', error);
     });
   }
 

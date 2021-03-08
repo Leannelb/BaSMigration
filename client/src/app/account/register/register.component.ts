@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit {
       this.router.navigateByUrl('/shop');
     }, error => {
       console.log('registercomp>>> error', error);
-      console.log('registercomp>>> error');
       this.errors = error;
     });
   }
@@ -47,14 +46,13 @@ export class RegisterComponent implements OnInit {
   validateEmailNotTaken(): AsyncValidatorFn {
     return control => {
       return timer(500).pipe(
-        switchMap(() =>  {
+        switchMap(() => {
           if (!control.value) {
             return of(null);
           }
           return this.accountService.checkEmailExists(control.value).pipe(
             map(res => {
               return res ? { emailExists: true } : null;
-              // either our email exists : true, else it doesnt
             })
           );
         })
@@ -63,3 +61,4 @@ export class RegisterComponent implements OnInit {
   }
 
 }
+

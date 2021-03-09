@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUser } from '../shared/models/user';
@@ -11,18 +11,18 @@ import { IUser } from '../shared/models/user';
 })
 export class AccountService {
   baseUrl = environment.apiUrl;
-  private currentUserSource = new BehaviorSubject<IUser>(null);
+  private currentUserSource = new ReplaySubject<IUser>(1);
+  // it will hold one user object & does not emit inital value so authguard waits & auths
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
-  
-  // tslint:disable-next-line: typedef
-  getCurrentUserValue() {
-    return this.currentUserSource.value;
-  }
 
   // tslint:disable-next-line: typedef
   loadCurrentUser(token: string) {
+    if (token === null) {
+      this.currentUserSource.next(null);
+      return of(null);
+    }
     // send the token & pass as a header
     let headers = new HttpHeaders();
     headers = headers.set('Authorization', `Bearer ${token}`);

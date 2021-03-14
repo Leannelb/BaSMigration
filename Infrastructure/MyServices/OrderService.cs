@@ -25,13 +25,33 @@ namespace Infrastructure.Services
             _orderRepo = orderRepo;
         }
 
-        public Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethod, string basketId, Address shippingAddress)
+        public Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
         {
             // get basket from repo
-            // get products from the repo
+            var basket = await _basketRepo.GetBasketAsync(basketId)
+            
+            // get products from the repop
+            var items = new List<OrderItem>();
+            foreach(var item in basket.Items)
+            {
+                var productItem = await _productRepo.GetByIdAsync(item.Id);
+                var itemOrdered = await ProductItemOrdered(productItem.Id, productItem.Name, productItem.PictureUrl();
+                var orderItem = new OrderItem(itemOrdered, productItem.Price, item.Quantity);
+                items.Add(orderItem);
+            }
+
+            // get delivery method fromthe repo
+            var deliveryMethod = await _dmRepo.GetByIdAsync(deliveryMethodId);
+
             // calc subtotal
+            // 
+            var subtotal = items.Sum(item => item.Price * item.Quantity);            // create order
+            
             // create order
-            // save to db
+            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
+
+            // TODO save to db
+            
             // return order
         }
     }

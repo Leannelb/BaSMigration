@@ -10,9 +10,9 @@ namespace Infrastructure.Services
     public class OrderService : IOrderService
     {
         private readonly IBasketRepository _basketRepo;
-        private readonly IGenericRepository<Order> _orderRepo;
-        private readonly IGenericRepository<DeliveryMethod> _dmRepo;
-        private readonly IGenericRepository<Product> _productRepo;
+        //private readonly IGenericRepository<Order> _orderRepo;
+        //private readonly IGenericRepository<DeliveryMethod> _dmRepo;
+        //private readonly IGenericRepository<Product> _productRepo;
         private readonly IUnitOfWork _unitOfWork;
 
         public OrderService(IUnitOfWork unitOfWork, IBasketRepository basketRepo)
@@ -21,7 +21,7 @@ namespace Infrastructure.Services
             _basketRepo = basketRepo;
         }
 
-        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
+        public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Core.Entities.OrderAggregate.Address shippingAddress)
         {
             // get basket from the repo
             var basket = await _basketRepo.GetBasketAsync(basketId);
@@ -54,7 +54,7 @@ namespace Infrastructure.Services
             // delete basket
             await _basketRepo.DeleteBasketAsync(basketId);
 
-            // return order
+            return order;
         }
         public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
         {

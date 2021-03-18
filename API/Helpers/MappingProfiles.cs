@@ -2,6 +2,7 @@
 using API.DataTransferObjects;
 using AutoMapper;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 
 namespace API.Helpers
 {
@@ -13,8 +14,7 @@ namespace API.Helpers
                 .ForMember(d => d.ProductBrand, o => o.MapFrom(s => s.ProductBrand.Name))
                 .ForMember(d => d.ProductType, o => o.MapFrom(s => s.ProductType.Name))
                 .ForMember(d => d.PictureUrl, o => o.MapFrom<ProductsUrlResolver>());
-            CreateMap<Address, AddressDto>().ReverseMap();
-            //CreateMap<Core.Entities.Identity.Address, AddressDto>().ReverseMap();
+            CreateMap<Core.Entities.Identity.Address, AddressDto>().ReverseMap();
             CreateMap<CustomerBasketDto, CustomerBasket>();
             CreateMap<BasketItemDto, BasketItem>();
         
@@ -22,6 +22,8 @@ namespace API.Helpers
             // we use reverseMap for it to map it both ways for us
             // we map our address to our address Dto so auto mapper will now map these together as they have the exact same name. 
             CreateMap<AddressDto, Core.Entities.OrderAggregate.Address>();
+            CreateMap<Order, OrderToReturnDto>();
+            CreateMap<OrderItem, OrderItemDto>();
         }
     }
 }

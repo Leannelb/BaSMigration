@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Data.Migrations
 {
@@ -7,11 +6,6 @@ namespace Infrastructure.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "PictureUrl",
-                table: "Products",
-                nullable: true);
-
             migrationBuilder.CreateTable(
                 name: "DeliveryMethods",
                 columns: table => new
@@ -35,7 +29,7 @@ namespace Infrastructure.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     BuyerEmail = table.Column<string>(nullable: true),
-                    OrderData = table.Column<DateTimeOffset>(nullable: false),
+                    OrderDate = table.Column<long>(nullable: false),
                     ShipToAddress_FirstName = table.Column<string>(nullable: true),
                     ShipToAddress_LastName = table.Column<string>(nullable: true),
                     ShipToAddress_Street = table.Column<string>(nullable: true),
@@ -55,7 +49,7 @@ namespace Infrastructure.Data.Migrations
                         column: x => x.DeliveryMethodId,
                         principalTable: "DeliveryMethods",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -79,7 +73,7 @@ namespace Infrastructure.Data.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -103,10 +97,6 @@ namespace Infrastructure.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "DeliveryMethods");
-
-            migrationBuilder.DropColumn(
-                name: "PictureUrl",
-                table: "Products");
         }
     }
 }

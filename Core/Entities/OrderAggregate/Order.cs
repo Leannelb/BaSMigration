@@ -22,7 +22,6 @@ namespace Core.Entities.OrderAggregate
 
         // get the order via the buyerEmail
         public string BuyerEmail {get;set;}
-        
         // Time of order got from pc at time not changable via timezone
         public DateTimeOffset OrderData {get;set;} = DateTimeOffset.Now;
         public Address ShipToAddress {get;set;}
@@ -31,6 +30,7 @@ namespace Core.Entities.OrderAggregate
         public decimal Subtotal {get; set;}
         public OrderStatus Status {get; set;} = OrderStatus.Pending;
         public string PaymentIntentId {get; set;}
+        
         public decimal GetTotal() {
             return Subtotal + DeliveryMethod.Price;
         }

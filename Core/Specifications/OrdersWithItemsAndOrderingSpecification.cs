@@ -6,19 +6,19 @@ namespace Core.Specifications
 {
     public class OrdersWithItemsAndOrderingSpecification : BaseSpecification<Order>
     {
-        public OrdersWithItemsAndOrderingSpecification(string email) : base(order => order.BuyerEmail == email)
+        public OrdersWithItemsAndOrderingSpecification(string email) : base(o => o.BuyerEmail == email)
         {
-            AddInclude(order => order.OrderItems);
-            AddInclude(order => order.DeliveryMethod);
-            AddOrderByDescending(order => order.OrderData);
+            AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
+            AddOrderByDescending(o => o.OrderData);
 
         }
 
         public OrdersWithItemsAndOrderingSpecification(int id, string email)     
-            : base(order => order.Id == id && order.BuyerEmail == email)
+            : base(o => o.Id == id && o.BuyerEmail == email)
         {
-            AddInclude(order => order.OrderItems);
-            AddInclude(order => order.DeliveryMethod);
+            AddInclude(o => o.OrderItems);
+            AddInclude(o => o.DeliveryMethod);
         }
-    }
+    }\
 }

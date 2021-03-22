@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PVosxBvAtBUXsrKGw3aro4N2n9Ej/FtJvI64MYsBh+dPL/8SSYsOuneGMmbPOqC6xYg8Sbum0hqV7jQoGMDH6w==",
+  "dgSpecHash": "8cKbm0DHkaNx81sRYcTZ7gD5nLXafcJiiNBTaHfFP/rZ9FV+LCNKFDMZ+ECuTo8m7kl30/nVy36KBXxSp+ZcNg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -135,7 +135,9 @@
     "C:\\Users\\Dell\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Dell\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Dell\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.3\\microsoft.aspnetcore.app.ref.3.1.3.nupkg.sha512"
   ],
   "logs": []
 }

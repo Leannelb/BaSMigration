@@ -1,8 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using API.DataTransferObjects;
 using API.Errors;
-using API.Extension;
+using API.Extensions;
 using AutoMapper;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
@@ -45,7 +47,7 @@ namespace API.Controllers
 
             return Ok(_mapper.Map<IReadOnlyList<Order>, IReadOnlyList<OrderToReturnDto>>(orders));
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
         {
@@ -53,7 +55,7 @@ namespace API.Controllers
 
             var order = await _orderService.GetOrderByIdAsync(id, email);
 
-            if(order == null) return NotFound(new ApiResponse(404));
+            if (order == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Order, OrderToReturnDto>(order);
         }
@@ -63,6 +65,5 @@ namespace API.Controllers
         {
             return Ok(await _orderService.GetDeliveryMethodsAsync());
         }
-
     }
 } 

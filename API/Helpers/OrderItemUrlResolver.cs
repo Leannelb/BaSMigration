@@ -1,8 +1,7 @@
+using API.DataTransferObjects;
 using AutoMapper;
 using Core.Entities.OrderAggregate;
-using API.DataTransferObjects;
-using Microsoft.Extentions.Configuration;
-
+using Microsoft.Extensions.Configuration;
 
 namespace API.Helpers
 {
@@ -14,9 +13,9 @@ namespace API.Helpers
             _config = config;
         }
 
-        public string Resolve(OrderItem source, ProductToReturnDto destination, string destMember, ResolutionContext context)
+        public string Resolve(OrderItem source, OrderItemDto destination, string destMember, ResolutionContext context)
         {
-         if(!string.IsNullOrEmpty(source.ItemOrdered.PictureUrl))
+            if (!string.IsNullOrEmpty(source.ItemOrdered.PictureUrl))
             {
                 return _config["ApiUrl"] + source.ItemOrdered.PictureUrl;
             }

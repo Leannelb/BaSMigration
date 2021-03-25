@@ -14,7 +14,7 @@ namespace API.Helpers
             _config = config;
         }
 
-        public string Resolve(Product source, ProductToReturnDto destination, string destMember, ResolutionContext context)
+        public string Resolve(OrderItem source, ProductToReturnDto destination, string destMember, ResolutionContext context)
         {
          if(!string.IsNullOrEmpty(source.ItemOrdered.PictureUrl))
             {

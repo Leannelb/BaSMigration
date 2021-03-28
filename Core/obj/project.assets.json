@@ -669,28 +669,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PaulG\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Dell\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PaulG\\Documents\\2021\\sites\\BaSMigration\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\PaulG\\Documents\\2021\\sites\\BaSMigration\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\PaulG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PaulG\\Documents\\2021\\sites\\BaSMigration\\Core\\obj\\",
+      "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\PaulG\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

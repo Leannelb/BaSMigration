@@ -16,6 +16,7 @@ export class ShopService {
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
   getProducts(shopParams: ShopParams) {
+    console.log('get products shopParams', shopParams);
     // s
     // when we create a typescript class we can use them as classes themselved, that we create new instances of
     // but we can also use them as types. i.e. ShopParams: ShopParams (this indicates the type)
@@ -53,6 +54,7 @@ export class ShopService {
 
   // tslint:disable-next-line: typedef
   getProduct(id: number) {
+    console.log({id});
     return this.http.get<IProduct>(this.baseUrl + 'products/' + id );
   }
 

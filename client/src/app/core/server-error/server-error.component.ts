@@ -13,7 +13,6 @@ export class ServerErrorComponent implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     this.error = navigation && navigation.extras && navigation.extras.state && navigation.extras.state && navigation.extras.state.error;
     console.log('this.error >>>>', this.error);
-   
    }
 
   ngOnInit(): void {

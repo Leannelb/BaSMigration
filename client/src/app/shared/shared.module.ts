@@ -7,29 +7,36 @@ import { OrderTotalsComponent } from './components/order-totals/order-totals.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TextInputComponent } from './components/text-input/text-input.component';
-
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { StepperComponent } from './components/stepper/stepper.component';
 @NgModule({
   declarations: [
     PagingHeaderComponent,
     PagerComponent,
     OrderTotalsComponent,
     TextInputComponent,
+    StepperComponent,
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(), // bootstraps services need to be injected @ startup
     ReactiveFormsModule,
+    CdkStepperModule
   ],
   // we add for root because the PaginationModule has it's own providers array that need to be injected into the root at startup.
   exports: [
     PaginationModule,
     PagingHeaderComponent,
     PagerComponent,
+    CarouselModule,
     OrderTotalsComponent,
     ReactiveFormsModule,
     BsDropdownModule,
-    TextInputComponent
-  ],
+    CdkStepperModule,
+    TextInputComponent,
+    StepperComponent
+  ]
 })
 export class SharedModule {}

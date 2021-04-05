@@ -16,7 +16,7 @@ export class StepperComponent extends CdkStepper implements OnInit {
   // tslint:disable-next-line: typedef
   onClick(index: number) {
     this.selectedIndex = index;
-    console.log(this.selectedIndex)
-;  }
+    console.log(this.selectedIndex);
+  }
 
 }

@@ -10,6 +10,9 @@ import { TextInputComponent } from './components/text-input/text-input.component
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { BasketSummaryComponent } from './components/basket-summary/basket-summary.component';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     PagingHeaderComponent,
@@ -17,13 +20,15 @@ import { StepperComponent } from './components/stepper/stepper.component';
     OrderTotalsComponent,
     TextInputComponent,
     StepperComponent,
+    BasketSummaryComponent
   ],
   imports: [
     CommonModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(), // bootstraps services need to be injected @ startup
     ReactiveFormsModule,
-    CdkStepperModule
+    CdkStepperModule,
+    RouterModule
   ],
   // we add for root because the PaginationModule has it's own providers array that need to be injected into the root at startup.
   exports: [
@@ -36,7 +41,8 @@ import { StepperComponent } from './components/stepper/stepper.component';
     BsDropdownModule,
     CdkStepperModule,
     TextInputComponent,
-    StepperComponent
+    StepperComponent,
+    BasketSummaryComponent
   ]
 })
 export class SharedModule {}

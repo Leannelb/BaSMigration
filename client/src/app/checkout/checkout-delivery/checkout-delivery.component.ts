@@ -11,13 +11,14 @@ import { CheckoutService } from '../checkout.service';
 export class CheckoutDeliveryComponent implements OnInit {
   @Input() checkoutForm: FormGroup;
   deliveryMethods: IDeliveryMethod[];
-  
+
   constructor(private checkoutService: CheckoutService) { }
 
   ngOnInit(): void {
     this.checkoutService.getDeliveryMethods().subscribe((dm: IDeliveryMethod[]) => {
       this.deliveryMethods  = dm;
-    })
-  }
+    }), error => {
+        console.log('app-checkout-delivery error ', error);
+    }  }
 
 }

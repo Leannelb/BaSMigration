@@ -81,8 +81,8 @@ export class AccountService {
 
     // tslint:disable-next-line: typedef
     updateUserAddress(address: IAddress) {
-      return this.http.post<IAddress>(this.baseUrl + 'account/address', address);
-      // post method so pass the address to be updated
+      return this.http.put<IAddress>(this.baseUrl + 'account/address', address);
+      // put method so pass the address to be updated
     }
 }
 

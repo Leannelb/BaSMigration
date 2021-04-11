@@ -84,6 +84,7 @@ export class BasketService {
     }
   }
 
+  // tslint:disable-next-line: typedef
   removeItemFromBasket(item: IBasketItem) {
     const basket = this.getCurrentBasketValue();
     if (basket.items.some(x => x.id === item.id)) {
@@ -96,6 +97,7 @@ export class BasketService {
     }
   }
 
+  // tslint:disable-next-line: typedef
   deleteBasket(basket: IBasket) {
     return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(() => {
       this.basketSource.next(null);
@@ -106,6 +108,14 @@ export class BasketService {
     });
   }
 
+  // tslint:disable-next-line: typedef
+  deleteLocalBasket(id: string) {
+    this.basketSource.next(null);
+    this.basketTotalSource.next(null);
+    localStorage.removeItem('basket_id');
+  }
+
+  // tslint:disable-next-line: typedef
   private calculateTotals() {
     const basket = this.getCurrentBasketValue();
     const shipping = this.shipping;

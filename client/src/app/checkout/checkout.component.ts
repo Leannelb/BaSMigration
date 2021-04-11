@@ -46,7 +46,7 @@ export class CheckoutComponent implements OnInit {
         this.checkoutForm.get('addressForm').patchValue(address);
       }
     }, error => {
-    console.log(error);
+    console.log('getAddressFormValues error', error);
     });
   }
 

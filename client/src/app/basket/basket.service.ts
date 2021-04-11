@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IBasket, IBasketItem, Basket, IBasketTotals } from '../shared/models/basket';
 import { map } from 'rxjs/operators';
 import { IProduct } from '../shared/models/product';
+import { IDeliveryMethod } from '../shared/models/deliveryMethod';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,18 @@ export class BasketService {
   basket$ = this.basketSource.asObservable();
   private basketTotalSource = new BehaviorSubject<IBasketTotals>(null);
   basketTotal$ = this.basketTotalSource.asObservable();
+  shipping = 0;
+
 
   constructor(private http: HttpClient) { }
 
+  // tslint:disable-next-line: typedef
+  setShippingPrice(deliveryMethod: IDeliveryMethod) {
+    this.shipping = deliveryMethod.price;
+    this.calculateTotals();
+  }
+  
+  // tslint:disable-next-line: typedef
   getBasket(id: string) {
     return this.http.get(this.baseUrl + 'basket?id=' + id)
       .pipe(
@@ -28,6 +38,7 @@ export class BasketService {
       );
   }
 
+  // tslint:disable-next-line: typedef
   setBasket(basket: IBasket) {
     return this.http.post(this.baseUrl + 'basket', basket).subscribe((response: IBasket) => {
       this.basketSource.next(response);
@@ -37,10 +48,12 @@ export class BasketService {
     });
   }
 
+  // tslint:disable-next-line: typedef
   getCurrentBasketValue() {
     return this.basketSource.value;
   }
 
+  // tslint:disable-next-line: typedef
   addItemToBasket(item: IProduct, quantity = 1) {
     const itemToAdd: IBasketItem = this.mapProductItemToBasketItem(item, quantity);
     let basket = this.getCurrentBasketValue();
@@ -51,6 +64,7 @@ export class BasketService {
     this.setBasket(basket);
   }
 
+  // tslint:disable-next-line: typedef
   incrementItemQuantity(item: IBasketItem) {
     const basket = this.getCurrentBasketValue();
     const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
@@ -58,6 +72,7 @@ export class BasketService {
     this.setBasket(basket);
   }
 
+  // tslint:disable-next-line: typedef
   decrementItemQuantity(item: IBasketItem) {
     const basket = this.getCurrentBasketValue();
     const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
@@ -93,7 +108,7 @@ export class BasketService {
 
   private calculateTotals() {
     const basket = this.getCurrentBasketValue();
-    const shipping = 0;
+    const shipping = this.shipping;
     const subtotal = basket.items.reduce((a, b) => (b.price * b.quantity) + a, 0);
     const total = subtotal + shipping;
     this.basketTotalSource.next({shipping, total, subtotal});

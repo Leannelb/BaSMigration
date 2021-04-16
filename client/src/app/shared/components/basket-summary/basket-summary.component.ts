@@ -10,23 +10,22 @@ import { IOrderItem } from '../../models/order';
   styleUrls: ['./basket-summary.component.scss']
 })
 export class BasketSummaryComponent implements OnInit {
-
-  constructor(private basketService: BasketService) { }
-  
-  basket$: Observable<IBasket>;
   @Output() decrement: EventEmitter<IBasketItem> = new EventEmitter <IBasketItem>();
   @Output() increment: EventEmitter<IBasketItem> = new EventEmitter <IBasketItem>();
   @Output() remove: EventEmitter<IBasketItem> = new EventEmitter <IBasketItem>();
   @Input() isBasket = true;
   // this is just for styling.
   @Input() isOrder = true;
+  // union type IBasketItem or IOrderItem
   @Input() items: IBasketItem[] | IOrderItem[] = [];
+  
+  constructor() { }
 
 
 
-  ngOnInit(): void {
-    this.basket$ = this.basketService.basket$;
-  }
+
+
+  ngOnInit(): void {}
 
   // tslint:disable-next-line: typedef
   decrementItemQuantity(item: IBasketItem) {

@@ -12,6 +12,7 @@
                             (decrement)="decrementItemQuantity($event)"
                             (increment)="incrementItemQuantity($event)"
                             (remove)="removeItemQuantity($event)"
+                            [items]="(basket$ | async).items"
                         ></app-basket-summary>
                     </div>
                 </div>

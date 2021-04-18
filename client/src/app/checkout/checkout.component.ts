@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { runInThisContext } from 'vm';
 import { AccountService } from '../account/account.service';
 import { BasketService } from '../basket/basket.service';
 import { IBasketTotals } from '../shared/models/basket';
@@ -19,6 +20,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.createCheckoutForm();
     this.getAddressFormValues();
+    this.getDeliveryMethodValue();
     this.basketTotals$ = this.basketService.basketTotal$;
   }
 
@@ -54,6 +56,14 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-
+  // tslint:disable-next-line: typedef
+  getDeliveryMethodValue() {
+    const basket = this.basketService.getCurrentBasketValue();
+    if ( basket.deliveryMethodId !== null ) {
+      this.checkoutForm.get('deliveryForm').get('deliveryMethod').patchValue(basket.deliveryMethodId.toString());
+    }
+  }
 
 }
+
+

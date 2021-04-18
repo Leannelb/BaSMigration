@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iO2DRe5+KJ4veCg7kkmVJNu3VX5dhqYoSaaWVDKfVFgVJF/odd/HKV6Dh1nE+vaA3yi/fCXeDnw4wQhl7wBKgQ==",
+  "dgSpecHash": "yPuiSp+mie9KGF5ZUsblq0hBHwVgfongpi5gr/scZuZZoQGB71IcwfGdY0QSdySkqlKgQ3m2Jk5O09xIAALy8A==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",

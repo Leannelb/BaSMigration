@@ -214,3 +214,4 @@ C:\Users\PaulG\Documents\2021\sites\BaSMigration\API\obj\Debug\netcoreapp3.1\sta
 C:\Users\PaulG\Documents\2021\sites\BaSMigration\API\obj\Debug\netcoreapp3.1\API.dll
 C:\Users\PaulG\Documents\2021\sites\BaSMigration\API\obj\Debug\netcoreapp3.1\API.pdb
 C:\Users\PaulG\Documents\2021\sites\BaSMigration\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+C:\Users\Dell\Documents\SITES\BAS2\BaSMigration\API\bin\Debug\netcoreapp3.1\Stripe.net.dll

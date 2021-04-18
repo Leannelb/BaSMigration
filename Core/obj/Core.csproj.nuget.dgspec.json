@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {}
+    "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {
+    "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\obj\\",
+        "outputPath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",

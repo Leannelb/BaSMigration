@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vgXg01ljVwIYfJcK1dbYlSjWtDhiiJGVNFRfl1vZpNbdY7eZ+cFAL0sY+xh1NmXi8yeQWDse2FK/YR/jIBz51w==",
+  "dgSpecHash": "QPV4Z7moPmlEOhBpn3YzX657wGWf9NkoPqiCYwg0yS03DMCM/AEN7MKVKKKlls7NsVY8tTxyGHnOCKImEWS1vw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Dell\\Documents\\SITES\\BAS2\\BaSMigration\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

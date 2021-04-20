@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,7 @@ declare var Stripe;
   templateUrl: './checkout-payment.component.html',
   styleUrls: ['./checkout-payment.component.scss']
 })
-export class CheckoutPaymentComponent implements OnInit {
+export class CheckoutPaymentComponent implements AfterViewInit {
   @Input() checkoutForm: FormGroup;
   @ViewChild('cardNumber', {static: true}) cardNumberElement: ElementRef;
   @ViewChild('cardExpiry', {static: true}) cardExpiryElement: ElementRef;
@@ -22,7 +22,8 @@ export class CheckoutPaymentComponent implements OnInit {
   cardNumber: any;
   cardExpiry: any;
   cardCvc: any;
-  cardError: any;
+  cardErrors: any;
+  cardHandler = this.onChange.bind(this);
 
   constructor(
     private basketService: BasketService,
@@ -31,29 +32,39 @@ export class CheckoutPaymentComponent implements OnInit {
     private router: Router
     ) { }
 
-  ngOnInit(): void {
-  }
+ 
 
+  // tslint:disable-next-line: typedef
   ngAfterViewInit() {
-    this.stripe = Stripe('pk_test_51IhJzxLRFCWIs366rsuNIXdDIPxL82HvdGerSfjHBPcU21iel0YYGyw4jhnSfIr3mlqckOEyOcm62MFP9U6P0LEu00O819mKnI')
+    this.stripe = Stripe('pk_test_51IhJzxLRFCWIs366rsuNIXdDIPxL82HvdGerSfjHBPcU21iel0YYGyw4jhnSfIr3mlqckOEyOcm62MFP9U6P0LEu00O819mKnI');
     const elements = this.stripe.elements();
 
     this.cardNumber = elements.create('cardNumber');
     this.cardNumber.mount(this.cardNumberElement.nativeElement);
+    this.cardNumber.addEventListener('change', this.cardHandler);
 
     this.cardExpiry = elements.create('cardExpiry');
     this.cardExpiry.mount(this.cardExpiryElement.nativeElement);
+    this.cardExpiry.addEventListener('change', this.cardHandler);
 
     this.cardCvc = elements.create('cardCvc');
     this.cardCvc.mount(this.cardCvcElement.nativeElement);
+    this.cardCvc.addEventListener('change', this.cardHandler);
   }
 
-  ngOnDestroy() {
-    this.cardNumber.destroy();
-    this.cardExpiry.destroy();
-    this.cardCvc.destroy();
+ 
+
+  // tslint:disable-next-line: typedef
+  onChange({error}) {
+    if(error) {
+      this.cardErrors = error.message;
+    } else {
+      this.cardErrors = null;
+    }
+
   }
 
+  // tslint:disable-next-line: typedef
   submitOrder() {
     // on successful basket additon routes to success page
     const basket = this.basketService.getCurrentBasketValue();
@@ -77,6 +88,12 @@ export class CheckoutPaymentComponent implements OnInit {
       deliveryMethodId: + this.checkoutForm.get('deliveryForm'). get('deliveryMethod').value,
       shipToAddress: this.checkoutForm.get('addressForm').value
     };
+  }
+
+  ngOnDestroy() {
+    this.cardNumber.destroy();
+    this.cardExpiry.destroy();
+    this.cardCvc.destroy();
   }
 
 }

@@ -13,7 +13,7 @@ declare var Stripe;
   templateUrl: './checkout-payment.component.html',
   styleUrls: ['./checkout-payment.component.scss']
 })
-export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
+export class CheckoutPaymentComponent implements AfterViewInit {
   @Input() checkoutForm: FormGroup;
   @ViewChild('cardNumber', {static: true}) cardNumberElement: ElementRef;
   @ViewChild('cardExpiry', {static: true}) cardExpiryElement: ElementRef;
@@ -24,7 +24,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
   cardCvc: any;
   cardErrors: any;
   cardHandler = this.onChange.bind(this);
-  loading: false;
+  loading = false;
 
   constructor(
     private basketService: BasketService,
@@ -32,6 +32,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     private toastr: ToastrService,
     private router: Router) { }
 
+  // tslint:disable-next-line: typedef
   ngAfterViewInit() {
     this.stripe = Stripe('pk_test_51IhJzxLRFCWIs366rsuNIXdDIPxL82HvdGerSfjHBPcU21iel0YYGyw4jhnSfIr3mlqckOEyOcm62MFP9U6P0LEu00O819mKnI');
     const elements = this.stripe.elements();
@@ -49,12 +50,14 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     this.cardNumber.addEventListener('change', this.cardHandler);
   }
 
+  // tslint:disable-next-line: typedef
   ngOnDestroy() {
     this.cardNumber.destroy();
     this.cardExpiry.destroy();
     this.cardCvc.destroy();
   }
 
+  // tslint:disable-next-line: typedef
   onChange({error}) {
     if (error) {
       this.cardErrors = error.message;
@@ -63,7 +66,8 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  submitOrder() {
+  // tslint:disable-next-line: typedef
+  async submitOrder() {
     this.loading = true;
     const basket = this.basketService.getCurrentBasketValue();
     try {
@@ -71,7 +75,7 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
       const paymentResult = await this.confirmPaymentWithStripe(basket);
       if (paymentResult.paymentIntent) {
         this.basketService.deleteLocalBasket(basket.id);
-        const navigationExtras: NavigationExtras = {state: order};
+        const navigationExtras: NavigationExtras = {state: createdOrder};
         this.router.navigate(['checkout/success'], navigationExtras);
       } else {
         this.toastr.error(paymentResult.error.message);
@@ -79,11 +83,11 @@ export class CheckoutPaymentComponent implements AfterViewInit, OnDestroy {
       this.loading = false;
     } catch ( error ) {
       console.log('CREATE ORDER ERROR', error);
-      this.loading =false;
+      this.loading = false;
     }
 
   }
-  
+
   // tslint:disable-next-line: typedef
   private async confirmPaymentWithStripe(basket) {
     return this.stripe.confirmCardPayment(basket.clientSecret, {

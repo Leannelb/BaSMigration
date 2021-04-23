@@ -25,6 +25,9 @@ export class CheckoutPaymentComponent implements AfterViewInit {
   cardErrors: any;
   cardHandler = this.onChange.bind(this);
   loading = false;
+  cardNumberValid = false;
+  cardExpiryValid = false;
+  cardCvcValid = false;
 
   constructor(
     private basketService: BasketService,
@@ -47,7 +50,7 @@ export class CheckoutPaymentComponent implements AfterViewInit {
 
     this.cardCvc = elements.create('cardCvc');
     this.cardCvc.mount(this.cardCvcElement.nativeElement);
-    this.cardNumber.addEventListener('change', this.cardHandler);
+    this.cardCvc.addEventListener('change', this.cardHandler);
   }
 
   // tslint:disable-next-line: typedef
@@ -58,11 +61,23 @@ export class CheckoutPaymentComponent implements AfterViewInit {
   }
 
   // tslint:disable-next-line: typedef
-  onChange({error}) {
-    if (error) {
-      this.cardErrors = error.message;
+  onChange(event) {
+
+    if (event.error) {
+      this.cardErrors = event.error.message;
     } else {
       this.cardErrors = null;
+    }
+    switch (event.elementType) {
+      case 'cardNumber':
+        this.cardNumberValid = event.complete;
+        break;
+      case 'cardExpriy':
+        this.cardExpiryValid = event.complete;
+        break;
+      case 'cardCvc':
+        this.cardCvcValid = event.complete;
+        break;
     }
   }
 

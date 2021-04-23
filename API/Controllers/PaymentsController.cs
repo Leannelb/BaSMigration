@@ -14,7 +14,7 @@ namespace API.Controllers
     public class PaymentsController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
-        private const string WhSecret = "";
+        private const string WhSecret = "whsec_eylgItQKOgM44nbAl7xT4N6yz1WPt61S";
         private readonly ILogger<PaymentsController> _logger;
         public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
         {
@@ -46,7 +46,7 @@ namespace API.Controllers
             switch (stripEvent.Type)
             {
                 case "payment_intent.succeeded":
-                    intent = (PaymentIntent)stripeEvent.Data.Object;
+                    intent = (PaymentIntent)stripEvent.Data.Object;
                     _logger.LogInformation("Payment Succeeded: ", intent.Id);
                     order = await _paymentService.UpdateOrderPaymentSucceeded(intent.Id);
                     _logger.LogInformation("Order Updated to payment recieved: ", order.Id);

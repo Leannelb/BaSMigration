@@ -4,9 +4,9 @@ using Core.Entities.OrderAggregate;
 
 namespace Core.Specifications
 {
-    public class OrdersByPaymentIntentIdWithItemSpecification : BaseSpecification<Order>
+    public class OrdersByPaymentIntentIdSpecification : BaseSpecification<Order>
     {
-        public OrdersByPaymentIntentIdWithItemSpecification(string paymentIntentId) 
+        public OrdersByPaymentIntentIdSpecification(string paymentIntentId) 
             : base(o => o.PaymentIntentId == paymentIntentId)
         {
         }

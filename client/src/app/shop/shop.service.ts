@@ -7,11 +7,15 @@ import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
 import { IProduct } from '../shared/models/product';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
   baseUrl = 'https://localhost:5001/api/';
+  products: IProduct[] = [];
+  brands: IBrand[] = [];
+  types: IType[] = [];
 
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
@@ -38,6 +42,7 @@ export class ShopService {
     return this.http.get<IPagingation>(this.baseUrl + 'products', {observe: 'response', params})
       .pipe(
         map(response => {
+          this.products = response.body.data;
           return response.body;
         })
       );
@@ -54,17 +59,38 @@ export class ShopService {
 
   // tslint:disable-next-line: typedef
   getProduct(id: number) {
+    const product = this.products.find(p => p.id == id);
     console.log({id});
+
+    if ( product ){
+      return of(product);
+    }
     return this.http.get<IProduct>(this.baseUrl + 'products/' + id );
   }
 
   // tslint:disable-next-line: typedef
   getTypes() {
-    return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
+    if (this.types.length > 0 ){
+      return of(this.types);
+    }
+    return this.http.get<IBrand[]>(this.baseUrl + 'products/brands').pipe(
+      map(response => {
+        this.brands = response;
+        return response;
+      })
+    );
   }
 
   // tslint:disable-next-line: typedef
   getBrands() {
-    return this.http.get<IType[]>(this.baseUrl + 'products/types');
+    if (this.brands.length > 0 ){
+      return of(this.brands);
+    }
+    return this.http.get<IType[]>(this.baseUrl + 'products/types').pipe(
+      map(response => {
+        this.types = response;
+        return response;
+      })
+    );
   }
 }

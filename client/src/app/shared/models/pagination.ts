@@ -5,4 +5,11 @@ export interface IPagingation {
     pageSize: number;
     count: number;
     data: IProduct[];
-  }
+}
+
+export class Pagination implements IPagingation {
+  pageIndex: number;
+  pageSize: number;
+  count: number;
+  data: IProduct[] = [];
+}

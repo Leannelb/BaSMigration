@@ -1,12 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IBrand } from '../shared/models/brand';
-import { IPagingation } from '../shared/models/pagination';
+import { IPagingation, Pagination } from '../shared/models/pagination';
 import { IType } from '../shared/models/productType';
 import { map } from 'rxjs/operators';
 import { ShopParams } from '../shared/models/shopParams';
 import { IProduct } from '../shared/models/product';
-import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -16,34 +15,36 @@ export class ShopService {
   products: IProduct[] = [];
   brands: IBrand[] = [];
   types: IType[] = [];
+  pagination = new Pagination();
+  shopParams = new ShopParams();
 
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
-  getProducts(shopParams: ShopParams) {
-    console.log('get products shopParams', shopParams);
-    // s
+  getProducts() {
+    console.log('get products this.shopParams', this.shopParams);
     // when we create a typescript class we can use them as classes themselved, that we create new instances of
-    // but we can also use them as types. i.e. ShopParams: ShopParams (this indicates the type)
+    // but we can also use them as types. i.e. this.shopParams: this.shopParams (this indicates the type)
     let params = new HttpParams();
 
-    if (shopParams.brandId !== 0) {
-      params = params.append('brandId', shopParams.brandId.toString());
+    if (this.shopParams.brandId !== 0) {
+      params = params.append('brandId', this.shopParams.brandId.toString());
     }
-    if (shopParams.typeId !== 0) {
-      params = params.append('typeId', shopParams.typeId.toString());
+    if (this.shopParams.typeId !== 0) {
+      params = params.append('typeId', this.shopParams.typeId.toString());
     }
-    if (shopParams.search) {
-      params = params.append('search', shopParams.search);
+    if (this.shopParams.search) {
+      params = params.append('search', this.shopParams.search);
     }
-    params = params.append('sort', shopParams.sort);
-    params = params.append('pageIndex', shopParams.pageNumber.toString());
-    params = params.append('pageIndex', shopParams.pageSize.toString());
+    params = params.append('sort', this.shopParams.sort);
+    params = params.append('pageIndex', this.shopParams.pageNumber.toString());
+    params = params.append('pageIndex', this.shopParams.pageSize.toString());
 
     return this.http.get<IPagingation>(this.baseUrl + 'products', {observe: 'response', params})
       .pipe(
         map(response => {
-          this.products = response.body.data;
-          return response.body;
+          this.products = [...this.products, ...response.body.data];
+          this.pagination = response.body;
+          return this.pagination;
         })
       );
     }
@@ -58,8 +59,17 @@ export class ShopService {
   // return this.http.get<IBrand[]>(this.baseUrl + 'products/brands');
 
   // tslint:disable-next-line: typedef
+  setShopParams(params: ShopParams){
+    this.shopParams = params;
+  }
+
+  // tslint:disable-next-line: typedef
+  getShopParams() {
+    return this.shopParams;
+  }
+  // tslint:disable-next-line: typedef
   getProduct(id: number) {
-    const product = this.products.find(p => p.id == id);
+    const product = this.products.find(p => p.id === id);
     console.log({id});
 
     if ( product ){

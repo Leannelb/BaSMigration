@@ -17,10 +17,21 @@ export class ShopService {
   types: IType[] = [];
   pagination = new Pagination();
   shopParams = new ShopParams();
+  productCache = new Map();
 
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line: typedef
-  getProducts() {
+  getProducts(useCache: boolean) {
+    if (useCache === false) {
+      this.productCache = new Map();
+    }
+
+    if (this.productCache.size > 0 && useCache === true) {
+      if (this.productCache.has(Object.values(this.shopParams).join('-'))) {
+        this.pagination.data = this.productCache.get(Object.values(this.shopParams).join('-'));
+        return of(this.pagination);
+      }
+    }
     console.log('get products this.shopParams', this.shopParams);
     // when we create a typescript class we can use them as classes themselved, that we create new instances of
     // but we can also use them as types. i.e. this.shopParams: this.shopParams (this indicates the type)
@@ -42,7 +53,7 @@ export class ShopService {
     return this.http.get<IPagingation>(this.baseUrl + 'products', {observe: 'response', params})
       .pipe(
         map(response => {
-          this.products = [...this.products, ...response.body.data];
+          this.productCache.set(Object.values(this.shopParams).join('-'), response.body.data);
           this.pagination = response.body;
           return this.pagination;
         })
@@ -69,7 +80,10 @@ export class ShopService {
   }
   // tslint:disable-next-line: typedef
   getProduct(id: number) {
-    const product = this.products.find(p => p.id === id);
+    let product: IProduct;
+    this.productCache.forEach((products: IProduct[]) => {
+      product = products.find(p => p.id === id);
+    });
     console.log({id});
 
     if ( product ){

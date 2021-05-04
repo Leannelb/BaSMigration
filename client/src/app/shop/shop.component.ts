@@ -38,7 +38,7 @@ export class ShopComponent implements OnInit {
       this.products = response.data;
       this.totalCount = response.count;
     }, error => {
-      console.log(error);
+      console.log(error); 
     });
   }
 

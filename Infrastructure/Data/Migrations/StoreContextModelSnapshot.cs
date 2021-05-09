@@ -101,13 +101,12 @@ namespace Infrastructure.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(180);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT")
-                        .HasMaxLength(100);
+                        .HasMaxLength(200);
 
                     b.Property<string>("PictureUrl")
                         .HasColumnType("TEXT");
